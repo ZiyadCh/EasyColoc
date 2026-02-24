@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
-            $table->enum('role', ['admin','owner','member','outcast'])->default('outcast');
+            $table->enum('role', ['admin','member','outcast'])->default('outcast');
             $table->integer('reputation')->default(0);
             $table->float('dette')->default(0);
             $table->float('total_dette')->default(0);
             $table->boolean('active')->default(true);
+            $table->boolean('isOwner')->default(false);
             $table->dateTime('left_at')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
