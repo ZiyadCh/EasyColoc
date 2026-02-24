@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('prenom');
+            $table->string('name');
             $table->enum('role', ['admin','member','outcast'])->default('outcast');
             $table->integer('reputation')->default(0);
             $table->float('dette')->default(0);

@@ -4,7 +4,6 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\Pivot;
@@ -22,13 +21,13 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-    'nom',
-    'prenom',
+    'name',
     'role',
     'reputation',
     'dette',
     'total_dette',
     'active',
+    'isOwner',
     'email',
     'password',
     ];
@@ -68,4 +67,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * @param array<string,mixed> $array
+     */
 }
