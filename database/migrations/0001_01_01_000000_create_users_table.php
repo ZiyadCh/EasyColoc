@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->enum('role', ['admin','owner','member','outcast'])->default('outcast');
-            $table->integer('reputation');
-            $table->integer('total_owns');
-            $table->boolean('active');
+            $table->integer('reputation')->default(0);
+            $table->float('dette')->default(0);
+            $table->float('total_dette')->default(0);
+            $table->boolean('active')->default(true);
+            $table->dateTime('left_at')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
