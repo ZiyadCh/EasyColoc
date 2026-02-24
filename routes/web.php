@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('newColoc/',[ColocationController::class,'newColoc'])->name('newColoc');
+Route::post('newColoc/',[ColocationController::class,'newColoc'])->name('newColoc');
+Route::view('colocForm', 'coloc-form');
 
 require __DIR__.'/auth.php';

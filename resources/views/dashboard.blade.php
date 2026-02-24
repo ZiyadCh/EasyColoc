@@ -6,7 +6,28 @@
 
         <div class="container mx-auto p-6 md:p-12 max-w-4xl">
 
+<!-- Stats Cards -->
+<div class="w-full max-w-2xl mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
+        <!-- Reputation Card -->
+        <div class="bg-gray-800 border border-gray-700 rounded-xl p-6">
+            <p class="text-gray-400 text-sm mb-2">Reputation Total </p>
+            <h3 class="text-3xl font-bold text-white">
+                            0
+            </h3>
+        </div>
+
+        <!-- Expenses Card -->
+        <div class="bg-gray-800 border border-gray-700 rounded-xl p-6">
+            <p class="text-gray-400 text-sm mb-2">Expenses totale</p>
+            <h3 class="text-3xl font-bold text-white">
+                            0
+            </h3>
+        </div>
+
+    </div>
+</div>
 
             <div class="flex flex-col items-center justify-center text-center">
 
@@ -16,14 +37,14 @@
                     </svg>
                 </div>
 
-                <h2 class="text-4xl font-bold text-white mb-4">Aucun groupe pour le moment</h2>
-                <p class="text-gray-500 p-6">Créer un nouvau groupe ou attender une invitation</p>
+                <h2 class="text-4xl font-bold text-white mb-4">Aucune colocation pour le moment</h2>
+                <p class="text-gray-500 p-6">Créer une nouvelle colocation ou attender une invitation</p>
 
 
                 <div class="w-full max-w-sm">
                         <a href="{{ route('newColoc') }}">
                     <button class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-500 transition-all ">
-                        Créer un groupe
+                        Créer une colocation
                     </button>
                         </a>
                 </div>
