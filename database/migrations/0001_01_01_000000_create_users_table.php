@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
-            $table->enum('role', ['admin','owner','member'])->default('member');
+            $table->enum('role', ['admin','owner','member','outcast'])->default('outcast');
             $table->integer('reputation');
+            $table->integer('total_owns');
             $table->boolean('active');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

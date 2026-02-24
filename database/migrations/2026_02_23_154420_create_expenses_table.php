@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('payeur')->constrained('users')->onDelete('cascade');
+            $table->float('montant');
+            $table->string('categorie');
             $table->timestamps();
         });
     }
