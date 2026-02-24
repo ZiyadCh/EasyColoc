@@ -9,11 +9,13 @@ use users;
 class Expense extends Model
 {
     protected $fillable =[
-        'id',
         'payeur',
         'montant',
         'categorie',
     ];
+    /**
+     * @return BelongsTo<users,Expense>
+     */
     public function user(): BelongsTo {
          return $this->belongsTo('users');
     }

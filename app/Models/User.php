@@ -4,6 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -22,12 +26,26 @@ class User extends Authenticatable
     'prenom',
     'role',
     'reputation',
-    'total_owns',
+    'dette',
+    'total_dette',
     'active',
     'email',
     'password',
     ];
-
+    /**
+     * @return HasMany<Expense,User>
+     */
+    public function expenses()
+    {
+    return $this->hasMany(Expense::class);
+    }
+    /**
+     * @return BelongsToMany<Colocation,User,Pivot>
+     */
+    public function colocation(): BelongsToMany
+    {
+    return $this->belongsToMany(Colocation::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
