@@ -17,6 +17,6 @@ class ExpenceController extends Controller
         ]);
         $prix = $r->montant / User::count();
         $colocation = Colocation::find($col_id);
-        $colocation->users()->increment('dette',$r->montant);
+        $colocation->users()->increment('dette',$prix);
     }
 }
