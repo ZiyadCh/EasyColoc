@@ -41,9 +41,9 @@ class User extends Authenticatable
     /**
      * @return BelongsToMany<Colocation,User,Pivot>
      */
-    public function colocation(): BelongsToMany
+    public function colocations(): BelongsToMany
     {
-    return $this->belongsToMany(Colocation::class);
+        return $this->belongsToMany(Colocation::class);
     }
     /**
      * The attributes that should be hidden for serialization.

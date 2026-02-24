@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->enum('role', ['admin','member','outcast'])->default('outcast');
-            $table->integer('reputation')->default(0);
+            $table->integer('reputation')->default(1);
             $table->float('dette')->default(0);
             $table->float('total_dette')->default(0);
             $table->boolean('active')->default(true);

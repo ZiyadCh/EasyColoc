@@ -15,14 +15,22 @@ class ColocationController extends Controller
         $v = $r->validate([
             'nom' => 'required|string|max:255',
         ]);
+        //insert colocation into db
+        $colocation = Colocation::create([
+            'nom'=> $v['nom']
+        ]);
         // user role change
         $user =auth()->user();
         $user->role = 'member';
         $user->isOwner = true;
+        //add to pivot table
+        $user->colocations()->attach($colocation->id);
+        //save to db
         $user->save();
-        //insert colocation into db
-        Colocation::create([
-            'nom'=> $v['nom']
-        ]);
     }
+
+    public function leaveColoc(): void {
+        # code...
+    }
+
 }

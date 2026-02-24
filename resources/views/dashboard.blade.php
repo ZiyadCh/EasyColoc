@@ -14,15 +14,16 @@
         <div class="bg-gray-800 border border-gray-700 rounded-xl p-6">
             <p class="text-gray-400 text-sm mb-2">Reputation Total </p>
             <h3 class="text-3xl font-bold text-white">
-                            0
+                {{auth()->user()->reputation}}
             </h3>
         </div>
 
         <!-- Expenses Card -->
         <div class="bg-gray-800 border border-gray-700 rounded-xl p-6">
-            <p class="text-gray-400 text-sm mb-2">Expenses totale</p>
+            <p class="text-gray-400 text-sm mb-2">Dette totale</p>
             <h3 class="text-3xl font-bold text-white">
-                            0
+
+                {{auth()->user()->total_dette}}
             </h3>
         </div>
 
@@ -42,7 +43,7 @@
 
 
                 <div class="w-full max-w-sm">
-                        <a href="{{ route('newColoc') }}">
+                        <a href="colocForm">
                     <button class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-500 transition-all ">
                         Créer une colocation
                     </button>
