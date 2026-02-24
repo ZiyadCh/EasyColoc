@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('colocations', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->integer('total_expense');
+            $table->float('total_expense')->default(0);
             $table->timestamps();
         });
     }

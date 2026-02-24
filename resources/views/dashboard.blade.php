@@ -21,9 +21,11 @@
 
 
                 <div class="w-full max-w-sm">
+                        <a href="{{ route('newColoc') }}">
                     <button class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-500 transition-all ">
                         Créer un groupe
                     </button>
+                        </a>
                 </div>
 
 
