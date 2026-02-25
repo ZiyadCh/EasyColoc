@@ -10,28 +10,27 @@
                 <h1 class="text-2xl font-bold text-white">Nouvelle dépense</h1>
             </div>
 
-            <form>
+            <form action="{{ route('addExp', ['id'=>$id]) }}" method="POST">
+                @csrf
                 <div class="bg-gray-800/40 border border-gray-700 rounded-3xl p-8">
 
-                    <div class="mb-10 text-center">
+                    <div class="mb-10 ">
                         <label class="block text-xs text-gray-500 uppercase mb-4">Montant</label>
-                        <input type="number" placeholder="0.00"
-                            class="w-full bg-transparent text-center text-4xl font-bold text-white focus:outline-none placeholder-gray-800">
+                        <input name="montant" type="number" min=1 class="w-full bg-transparent border border-gray-700 rounded-2xl text-center text-4xl font-bold text-white focus:outline-none placeholder-gray-800">
                     </div>
 
                     <div class="space-y-6">
                         <div>
                             <label class="block text-xs text-gray-500 uppercase mb-2 ml-1">Catégorie</label>
-                            <input type="text" placeholder="Restaurant"
-                                class="w-full bg-gray-900 border border-gray-700 rounded-2xl p-4 text-white outline-none focus:border-indigo-500">
+                            <input type="text" name="categorie" class="w-full bg-gray-900 border border-gray-700 rounded-2xl p-4 text-white outline-none focus:border-indigo-500">
                         </div>
 
                         <div>
                             <label class="block text-xs text-gray-500 uppercase mb-2 ml-1">Payé par</label>
-                            <select class="w-full bg-gray-900 border border-gray-700 rounded-2xl p-4 text-white outline-none focus:border-indigo-500">
-                                <option>Ahmed</option>
-                                <option>Sara</option>
-                                <option>Yassine</option>
+                            <select name="payeur" class="w-full bg-gray-900 border border-gray-700 rounded-2xl p-4 text-white outline-none focus:border-indigo-500">
+                                @foreach ($members as $member)
+                                <option value="{{$member->id}}">{{$member->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -39,11 +38,11 @@
 
                 <div class="fixed bottom-8 left-0 right-0 px-6">
                     <div class="max-w-md mx-auto space-y-2">
-                        <button type="button" class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl">
-                            Enregistrer
-                        </button>
+                        <button type="submit" class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl">
+                            Ajouter
+                        </button></a>
 
-                        <button type="button" class="w-full py-4 text-gray-500">
+                        <button type="button" class="w-full bg-rose-500  py-4 text-white rounded-2xl">
                             Annuler
                         </button>
                     </div>

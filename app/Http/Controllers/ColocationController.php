@@ -35,7 +35,7 @@ class ColocationController extends Controller
     public function colocDetails($colocation_id): View{
         $coloc = Colocation::findOrFail($colocation_id);
         $members = $coloc->users;
-        return view('colocation',['members' => $members]);
+        return view('colocation',['members' => $members,'id'=> $colocation_id]);
     }
 
 }
