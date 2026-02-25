@@ -7,7 +7,7 @@
         <div class="container mx-auto p-6 md:p-12 max-w-2xl">
 
             <div class="mb-10 flex justify-between items-end px-2">
-                <h1 class="text-3xl font-bold text-white">Équilibres</h1>
+                <h1 class="text-3xl font-bold text-white">Balance totale</h1>
             </div>
 
             <div class="bg-gray-800/40 border border-gray-700 rounded-3xl overflow-hidden mb-8">
@@ -34,7 +34,7 @@
             <div class="fixed bottom-8 left-0 right-0 px-6">
                 <div class="max-w-md mx-auto">
                     <button class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl shadow-xl hover:bg-indigo-500 transition-all">
-                        + Dépense
+                        Ajouter Dépense
                     </button>
                 </div>
             </div>

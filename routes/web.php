@@ -22,4 +22,5 @@ Route::post('newColoc/',[ColocationController::class,'newColoc'])->name('newColo
 Route::view('colocForm', 'coloc-form');
 Route::get('colocDetails/{id}',[ColocationController::class,'colocDetails'])->name('colocDetails');
 
+Route::view('e', 'expence-form');
 require __DIR__.'/auth.php';
