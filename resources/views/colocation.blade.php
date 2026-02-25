@@ -18,7 +18,7 @@
                     <div class="flex items-center gap-4">
                         <p class="text-white font-medium">{{$member->name}}</p>
                     </div>
-                    <p class="text-xl font-bold text-white">{{$member->dette}} MAD</p>
+                    <p class="text-xl font-bold text-rose-500">- {{round($member->dette,2) }} MAD</p>
                 </div>
                 @endforeach
 
@@ -26,7 +26,7 @@
             </div>
 
             <div class="flex justify-center mb-24">
-                <a href="" class="flex items-center gap-2 px-6 py-2 text-white border border-gray-700 rounded-full hover:bg-gray-700 transition text-sm">
+                <a href="expense/list/{{$id}}" class="flex items-center gap-2 px-6 py-2 text-white border border-gray-700 rounded-full hover:bg-gray-700 transition text-sm">
                     <span>Voir toutes les dépenses</span>
                 </a>
             </div>

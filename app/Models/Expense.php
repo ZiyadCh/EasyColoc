@@ -19,4 +19,11 @@ class Expense extends Model
     public function user(): BelongsTo {
          return $this->belongsTo('users');
     }
+    /**
+     * @return BelongsTo<Colocation,Expense>
+     */
+    public function colocations(): BelongsTo
+    {
+        return $this->belongsTo(Colocation::class);
+    }
 }

@@ -10,17 +10,16 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
         <div class="bg-gray-800 border border-gray-700 rounded-xl p-6">
-            <p class="text-gray-400 text-sm mb-2">Reputation Total </p>
-            <h3 class="text-3xl font-bold text-white">
+            <p class="text-gray-400 text-sm mb-2">Reputation </p>
+            <h3 class="text-3xl font-bold text-green-500">
                 {{auth()->user()->reputation}}
             </h3>
         </div>
 
         <div class="bg-gray-800 border border-gray-700 rounded-xl p-6">
             <p class="text-gray-400 text-sm mb-2">Dette totale</p>
-            <h3 class="text-3xl font-bold text-white">
-
-                {{auth()->user()->total_dette}}
+            <h3 class="text-3xl font-bold text-rose-500">
+                {{round(auth()->user()->total_dette,2)}} MAD
             </h3>
         </div>
 
@@ -28,12 +27,11 @@
     </div>
 
             @if (auth()->user()->colocations->isNotEmpty())
-
             <div class="flex flex-col items-center justify-center text-center">
                 <div class="w-full max-w-sm">
                         <a href="colocation/{{auth()->user()->colocations->first()->id}}">
                     <button class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-500 transition-all ">
-                            votre colocation
+                            Votre colocation
                     </button>
                         </a>
                 </div>
