@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ColocationController;
+use App\Http\Controllers\ExpenceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ Route::middleware('auth')->group(function () {
 Route::post('newColoc/',[ColocationController::class,'newColoc'])->name('newColoc');
 Route::view('colocForm', 'coloc-form');
 Route::get('colocDetails/{id}',[ColocationController::class,'colocDetails'])->name('colocDetails');
+Route::get('expence/{id}',[ExpenceController::class,'addExpence']);
 
-Route::view('e', 'expence-form');
+
 require __DIR__.'/auth.php';
