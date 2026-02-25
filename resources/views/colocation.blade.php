@@ -18,7 +18,7 @@
                     <div class="flex items-center gap-4">
                         <p class="text-white font-medium">{{$member->name}}</p>
                     </div>
-                    <p class="text-xl font-bold text-rose-500">- 240.00</p>
+                    <p class="text-xl font-bold text-white">{{$member->dette}} MAD</p>
                 </div>
                 @endforeach
 
