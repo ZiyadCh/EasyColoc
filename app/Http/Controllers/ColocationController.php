@@ -12,7 +12,7 @@ class ColocationController extends Controller
     /**
      * @param mixed $user_id
      */
-    public function newColoc(Request $r): View{
+    public function newColoc(Request $r){
         $v = $r->validate([
             'nom' => 'required|string|max:255',
         ]);
@@ -28,8 +28,8 @@ class ColocationController extends Controller
         $user->colocations()->attach($colocation->id);
         //save to db
         $user->save();
-        redirect()->route('colocDetails');
-        return view('colocation');
+        return redirect()->route('colocDetails',[$colocation->id]);
+
     }
 
     public function colocDetails($colocation_id): View{

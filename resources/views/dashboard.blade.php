@@ -28,9 +28,17 @@
     </div>
 
             @if (auth()->user()->colocations->isNotEmpty())
-                <h1>your group</h1>
-            @else
+
             <div class="flex flex-col items-center justify-center text-center">
+                <div class="w-full max-w-sm">
+                        <a href="colocation/{{auth()->user()->colocations->first()->id}}">
+                    <button class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-500 transition-all ">
+                            votre colocation
+                    </button>
+                        </a>
+                </div>
+                </div>
+            @else
 
 
                 <h2 class="text-4xl font-bold text-white mb-4">Aucune colocation pour le moment</h2>

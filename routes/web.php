@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
 
 Route::post('newColoc/',[ColocationController::class,'newColoc'])->name('newColoc');
 Route::view('colocForm', 'coloc-form');
-Route::get('colocDetails/{id}',[ColocationController::class,'colocDetails'])->name('colocDetails');
+Route::get('colocation/{id}',[ColocationController::class,'colocDetails'])->name('colocDetails');
 Route::get('expence/{id}',[ExpenceController::class,'addExpence']);
 
 
