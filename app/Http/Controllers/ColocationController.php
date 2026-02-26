@@ -7,40 +7,41 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-
 class ColocationController extends Controller
 {
     /**
      * @param mixed $user_id
      */
-    public function newColoc(Request $r): RedirectResponse{
+    public function newColoc(Request $r): RedirectResponse
+    {
         $v = $r->validate([
             'nom' => 'required|string|max:255',
         ]);
         //insert colocation into db
         $colocation = Colocation::create([
-            'nom'=> $v['nom']
+            'nom' => $v['nom'],
         ]);
         // user role change
-        $user =auth()->user();
+        $user = auth()->user();
         $user->role = 'member';
         $user->isOwner = true;
         //add to pivot table
         $user->colocations()->attach($colocation->id);
         //save to db
         $user->save();
-        return redirect()->route('colocDetails',[$colocation->id]);
+        return redirect()->route('colocDetails', [$colocation->id]);
 
     }
     /**
      * @param mixed $colocation_id
      */
-    public function colocDetails($colocation_id): View{
+    public function colocDetails($colocation_id): View
+    {
         $coloc = Colocation::findOrFail($colocation_id);
         $members = $coloc->users;
-        return view('colocation',[
+        return view('colocation', [
             'members' => $members,
-            'id'=> $colocation_id,
+            'id' => $colocation_id,
         ]);
     }
 
