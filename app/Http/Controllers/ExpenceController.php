@@ -41,6 +41,10 @@ class ExpenceController extends Controller
      */
     public function addExpence(Request $r, $col_id): RedirectResponse
     {
+        $r->validate([
+            'montant' => 'required|numeric|min:1',
+            'categorie' => 'required|string|max:255',
+        ]);
         //getting the colocation
         $colocation = Colocation::findOrFail($col_id);
         //creating the colocation

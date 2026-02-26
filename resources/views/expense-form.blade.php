@@ -40,9 +40,9 @@
                     <div class="max-w-md mx-auto space-y-2">
                         <button type="submit" class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl">
                             Ajouter
-                        </button></a>
+                        </button></button>
 
-                        <button type="button" class="w-full bg-rose-500  py-4 text-white rounded-2xl">
+                        <button onclick="javascript:history.back()" type="button" class="w-full bg-rose-500  py-4 text-white rounded-2xl">
                             Annuler
                         </button>
                     </div>

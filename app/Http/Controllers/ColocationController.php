@@ -30,7 +30,6 @@ class ColocationController extends Controller
         //save to db
         $user->save();
         return redirect()->route('colocDetails', [$colocation->id]);
-
     }
     /**
      * @param mixed $colocation_id
@@ -44,5 +43,4 @@ class ColocationController extends Controller
             'id' => $colocation_id,
         ]);
     }
-
 }

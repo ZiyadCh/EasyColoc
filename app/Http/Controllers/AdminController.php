@@ -70,6 +70,5 @@ class AdminController extends Controller
         $banned->save();
 
         return redirect()->route('dashboard');
-
     }
 }
