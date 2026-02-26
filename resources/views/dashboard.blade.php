@@ -25,7 +25,6 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
 
                 <div class="lg:col-span-2 space-y-6">
-                    <h2 class="text-2xl font-bold text-white mb-4">Gestion Colocation</h2>
 
                     @if (auth()->user()->colocations->isNotEmpty())
                         <div class="bg-indigo-600/10 border border-indigo-500/30 rounded-3xl p-8 flex flex-col items-center text-center">
