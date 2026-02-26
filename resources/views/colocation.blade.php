@@ -25,7 +25,7 @@
 
                         <div class="flex gap-2">
                                 @if(auth()->user()->isOwner)
-                            <form action="" method="POST" onsubmit="return confirm('Retirer ce membre ?')">
+                            <form action="{{ route('retirerUser', ['id'=>$member->id]) }}" method="POST" onsubmit="return confirm('Retirer ce membre ?')">
                                 @csrf
                                 <button class="px-3 py-1 text-xs font-medium text-gray-400 border border-gray-700 rounded-lg hover:bg-gray-700 hover:text-white transition">
                                     Retirer

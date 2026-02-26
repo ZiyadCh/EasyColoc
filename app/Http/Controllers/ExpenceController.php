@@ -21,7 +21,7 @@ class ExpenceController extends Controller
 
         return view('expense-form', [
             'members' => $members,
-            'id' => $colocation_id
+            'id' => $colocation_id,
         ]);
     }
     /**
@@ -33,7 +33,7 @@ class ExpenceController extends Controller
         $expenses = $colocation->expenses()->get();
 
         return view('expenses-list', [
-            'expenses' => $expenses
+            'expenses' => $expenses,
         ]);
     }
     /**
