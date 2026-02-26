@@ -31,6 +31,7 @@ Route::get('colocation/expense/list/{id}',[ExpenceController::class,'list']);
 
 //admin
 Route::post('bannUser/{id}',[AdminController::class,'bannUser'])->name('bannUser');
+Route::post('activateUser/{id}',[AdminController::class,'activateUser'])->name('activateUser');
 Route::get('transfer-owner/{current_owner_id}',[AdminController::class,'transfer'])->name('transfer-owner');
 Route::post('transfer-owner/confirm/{id}/{oldOwner}',[AdminController::class,'newOwner'])->name('finirTransfer');
 

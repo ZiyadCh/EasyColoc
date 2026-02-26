@@ -11,7 +11,7 @@ class AdminController extends Controller
     /**
      * @param mixed $id
      */
-    public function bannUser($id) {
+    public function bannUser($id): RedirectResponse {
         $user = User::findOrFail($id);
         $user->active = false;
 
@@ -20,6 +20,15 @@ class AdminController extends Controller
         }
 
         $user->colocations()->detach();
+        $user->save();
+        return redirect()->back();
+    }
+    /**
+     * @param mixed $id
+     */
+    public function activateUser($id): RedirectResponse {
+        $user = User::findOrFail($id);
+        $user->active = true;
         $user->save();
         return redirect()->back();
     }
