@@ -54,6 +54,11 @@
 
             <div class="fixed bottom-8 left-0 right-0 px-6">
                 <div class="max-w-md mx-auto">
+                    <a href="">
+                        <button class="w-full py-4 mb-2 bg-green-600 text-white font-bold rounded-2xl shadow-xl hover:bg-green-500 transition-all">
+                            Inviter un Utilisateur
+                        </button>
+                    </a>
                     <a href="{{ url('expense/form', ['coloc_id'=>$id]) }}">
                         <button class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl shadow-xl hover:bg-indigo-500 transition-all">
                             Ajouter Dépense

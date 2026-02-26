@@ -16,6 +16,10 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
         $user->active = false;
 
+        if ($user->id == auth()->user()->id) {
+            return redirect()->back();
+        }
+
         if ($user->isOwner) {
             return redirect()->route('transfer-owner', ['current_owner_id' => $id]);
         }

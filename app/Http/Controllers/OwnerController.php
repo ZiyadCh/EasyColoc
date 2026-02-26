@@ -11,6 +11,9 @@ class OwnerController extends Controller
     public function retirerUser($id): RedirectResponse
     {
         $user = User::findOrFail($id);
+        if ($user->id == auth()->user()->id) {
+            return redirect()->back();
+        }
         $user->colocations()->detach();
         return redirect()->back();
     }
