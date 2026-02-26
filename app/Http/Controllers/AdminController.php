@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function bannUser($id) {
+    /**
+     * @param mixed $id
+     */
+    public function bannUser($id): RedirectResponse {
         $user = User::findOrFail($id);
         $user->active = false;
 
@@ -17,7 +22,10 @@ class AdminController extends Controller
 
         $user->save();
     }
-    public function transfer($current_owner_id) {
+    /**
+     * @param mixed $current_owner_id
+     */
+    public function transfer($current_owner_id): View {
 
         $owner = User::findOrFail($current_owner_id);
         $colocation = $owner->colocations->first();
@@ -28,5 +36,23 @@ class AdminController extends Controller
             'colocation' => $colocation,
             'members' => $members
         ]);
+    }
+    /**
+     * @param mixed $id
+     * @param mixed $oldOwner
+     */
+    public function newOwner($id, $oldOwner): string {
+        $user = User::findOrFail($id);
+        $banned = User::findOrFail($oldOwner);
+        $user->isOwner = true;
+        $banned->isOwner = false;
+        $banned->active = false;
+        $banned->role ='outcast';
+        //enregister
+        $user->save();
+        $banned->save();
+
+        return route('dashboard');
+
     }
 }
