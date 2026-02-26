@@ -11,7 +11,7 @@ class AdminController extends Controller
     /**
      * @param mixed $id
      */
-    public function bannUser($id): RedirectResponse {
+    public function bannUser($id) {
         $user = User::findOrFail($id);
         $user->active = false;
 
@@ -19,7 +19,9 @@ class AdminController extends Controller
             return redirect()->route('transfer-owner',['current_owner_id'=>$id]);
         }
 
+        $user->colocations()->detach();
         $user->save();
+        return redirect()->back();
     }
     /**
      * @param mixed $current_owner_id
@@ -49,6 +51,7 @@ class AdminController extends Controller
         $banned->isOwner = false;
         $banned->active = false;
         $banned->role ='outcast';
+        $banned->colocations()->detach();
         //enregister
         $user->save();
         $banned->save();
