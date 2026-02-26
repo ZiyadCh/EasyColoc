@@ -17,7 +17,7 @@
                         <p class="text-white font-medium">{{$member->name}}</p>
                         @if($member->isOwner)
                             <p class="text-yellow-200">| Owner |</p>
-                        @endif
+                          @endif
                     </div>
 
                     <div class="flex items-center gap-6">
@@ -33,7 +33,7 @@
                             </form>
                         @endif
                                 @if(auth()->user()->role == 'admin')
-                            <form action="" method="POST" onsubmit="return confirm('Bannir cet ustilisateur ?')">
+                            <form action="{{ route('bannUser', ['id'=>$member->id]) }}" method="POST" onsubmit="return confirm('Bannir cet ustilisateur ?')">
                                 @csrf
                                 <button class="px-3 py-1 text-xs font-medium text-rose-400/80 border border-rose-900/30 bg-rose-900/10 rounded-lg hover:bg-rose-600 hover:text-white transition">
                                     Bannir
