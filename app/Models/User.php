@@ -13,7 +13,8 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,22 +22,22 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-    'name',
-    'role',
-    'reputation',
-    'dette',
-    'total_dette',
-    'active',
-    'isOwner',
-    'email',
-    'password',
+        'name',
+        'role',
+        'reputation',
+        'dette',
+        'total_dette',
+        'active',
+        'isOwner',
+        'email',
+        'password',
     ];
     /**
      * @return HasMany<Expense,User>
      */
     public function expenses()
     {
-    return $this->hasMany(Expense::class);
+        return $this->hasMany(Expense::class);
     }
     /**
      * @return BelongsToMany<Colocation,User,Pivot>

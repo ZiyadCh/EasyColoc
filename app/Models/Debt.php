@@ -11,10 +11,10 @@ class Debt extends Model
     protected $table = "debt";
 
     protected $fillable = [
-    'owned',
-    'owns',
-    'amount',
-    'payed',
+        'owned',
+        'owns',
+        'amount',
+        'payed',
     ];
 
     /**

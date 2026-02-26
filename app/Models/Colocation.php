@@ -27,4 +27,4 @@ class Colocation extends Model
     }
 
 
- }
+}

@@ -8,7 +8,7 @@ use users;
 
 class Expense extends Model
 {
-    protected $fillable =[
+    protected $fillable = [
         'payeur',
         'montant',
         'categorie',
@@ -16,8 +16,9 @@ class Expense extends Model
     /**
      * @return BelongsTo<users,Expense>
      */
-    public function user(): BelongsTo {
-         return $this->belongsTo('users');
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo('users');
     }
     /**
      * @return BelongsTo<Colocation,Expense>
