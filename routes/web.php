@@ -7,6 +7,7 @@ use App\Http\Controllers\ExpenceController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\CheckUserIsActive;
+use App\Http\Middleware\CheckUserIsOwner;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,7 +38,7 @@ Route::get('transfer-owner/{current_owner_id}', [AdminController::class,'transfe
 Route::post('transfer-owner/confirm/{id}/{oldOwner}', [AdminController::class,'newOwner'])->name('finirTransfer');
 
 //owner
-Route::post('retirerUser/{id}', [OwnerController::class,'retirerUser'])->name('retirerUser');
+Route::post('retirerUser/{id}', [OwnerController::class,'retirerUser'])->middleware(CheckUserIsOwner::class)->name('retirerUser');
 
 
 
