@@ -46,6 +46,13 @@ class User extends Authenticatable
         return $this->belongsToMany(Colocation::class);
     }
     /**
+     * @return BelongsToMany<User,User,Pivot>
+     */
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var list<string>

@@ -22,9 +22,10 @@ Route::middleware('auth')->group(function () {
 Route::post('newColoc/',[ColocationController::class,'newColoc'])->name('newColoc');
 Route::view('colocForm', 'coloc-form');
 Route::get('colocation/{id}',[ColocationController::class,'colocDetails'])->name('colocDetails');
+
 Route::get('expense/form/{col_id}',[ExpenceController::class,'index']);
 Route::post('expense/{id}',[ExpenceController::class,'addExpence'])->name('addExp');
-Route::get('expense/list/{id}',[ExpenceController::class,'list']);
+Route::get('colocation/expense/list/{id}',[ExpenceController::class,'list']);
 
 
 

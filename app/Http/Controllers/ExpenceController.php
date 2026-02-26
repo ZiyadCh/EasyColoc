@@ -3,23 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\Colocation;
+use App\Models\Debt;
 use App\Models\Expense;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ExpenceController extends Controller
 {
-    public function index($colocation_id) {
+    /**
+     * @param mixed $colocation_id
+     */
+    public function index($colocation_id): View {
         $coloc = Colocation::findOrFail($colocation_id);
         $members = $coloc->users;
         return view('expense-form',['members'=>$members,'id'=>$colocation_id]);
     }
-    public function list($colocation_id) {
-        $expenses = Expense::where('colocation_id', $colocation_id)->get();
+    /**
+     * @param mixed $colocation_id
+     */
+    public function list($colocation_id): View {
+        $colocation = Colocation::find($colocation_id);
+        $expenses = $colocation->expenses()->get();
         return view('expenses-list',['expenses'=> $expenses]);
     }
-    public function addExpence(Request $r,$col_id) {
+    /**
+     * @param mixed $col_id
+     */
+    public function addExpence(Request $r, $col_id): RedirectResponse {
         //ajout d'expence dans db
-        $colocation = Colocation::find($col_id);
+        $colocation = Colocation::findOrFail($col_id);
         $colocation->expenses()->create([
             'payeur'=> $r->payeur,
             'montant'=> $r->montant,
@@ -30,6 +43,23 @@ class ExpenceController extends Controller
         //spliting the bill
         $colocation->users()->whereNot('id',$r->payeur)->increment('dette',$prix);
         $colocation->users()->whereNot('id',$r->payeur)->increment('total_dette',$prix);
-        return redirect()->route('colocDetails',[$colocation->id]);
+
+        //add personal debt
+        $members = $colocation->users;
+
+           foreach ($members as $member) {
+
+                if ($member->id == $r->payeur) {
+                    continue;
+                }
+
+                Debt::create([
+                    'owned'     => $member->id,
+                    'owns'   => $r->payeur,
+                    'amount'        => $prix,
+                    'payed'       => false,
+                ]);
+            }
+            return redirect()->route('colocDetails',[$colocation->id]);
+        }
     }
-}
