@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -41,7 +40,9 @@ class AdminController extends Controller
      * @param mixed $id
      * @param mixed $oldOwner
      */
-    public function newOwner($id, $oldOwner): string {
+    public function newOwner($id, $oldOwner): RedirectResponse{
+        //$user = new owner
+        //$banned = old owner thats gonna get banned
         $user = User::findOrFail($id);
         $banned = User::findOrFail($oldOwner);
         $user->isOwner = true;
@@ -52,7 +53,7 @@ class AdminController extends Controller
         $user->save();
         $banned->save();
 
-        return route('dashboard');
+        return redirect()->route('dashboard');
 
     }
 }
