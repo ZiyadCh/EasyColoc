@@ -37,12 +37,10 @@ class ColocationController extends Controller
      */
     public function colocDetails($colocation_id): View{
         $coloc = Colocation::findOrFail($colocation_id);
-        $bannedUsers = User::where('active',false)->get;
         $members = $coloc->users;
         return view('colocation',[
             'members' => $members,
             'id'=> $colocation_id,
-            'bannedUsers'=>$bannedUsers
         ]);
     }
 
