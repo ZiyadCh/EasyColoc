@@ -22,6 +22,9 @@
                             required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            @session('error')
+            <x-input-error :messages="[$value]" class="mt-2" />
+            @endsession
         </div>
 
         <!-- Remember Me -->
