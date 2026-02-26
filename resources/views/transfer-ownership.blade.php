@@ -34,9 +34,9 @@
             </div>
 
             <div class="flex justify-center">
-                <a href="javascript:history.back()" class="bg-rose-500 flex items-center gap-2 px-5 py-2 text-xs font-medium text-white border border-gray-800 rounded-full ">
-                    Annuler
-                </a>
+                        <button onclick="javascript:history.back()" type="button" class="w-full bg-rose-500  py-4 text-white rounded-2xl">
+                            Annuler
+                        </button>
             </div>
 
         </div>
