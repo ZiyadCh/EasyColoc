@@ -11,18 +11,39 @@
             </div>
 
             <div class="bg-gray-800/40 border border-gray-700 rounded-3xl overflow-hidden mb-8">
-
                 @foreach ($members as $member)
-
                 <div class="p-6 flex items-center justify-between border-b border-gray-700/50">
                     <div class="flex items-center gap-4">
                         <p class="text-white font-medium">{{$member->name}}</p>
+                        @if($member->isOwner)
+                            <p class="text-yellow-200">| Owner |</p>
+                        @endif
                     </div>
-                    <p class="text-xl font-bold text-rose-500">- {{round($member->dette,2) }} MAD</p>
+
+                    <div class="flex items-center gap-6">
+                        <p class="text-xl font-bold text-rose-500">- {{round($member->dette,2) }} MAD</p>
+
+                        <div class="flex gap-2">
+                                @if(auth()->user()->isOwner)
+                            <form action="" method="POST" onsubmit="return confirm('Retirer ce membre ?')">
+                                @csrf
+                                <button class="px-3 py-1 text-xs font-medium text-gray-400 border border-gray-700 rounded-lg hover:bg-gray-700 hover:text-white transition">
+                                    Retirer
+                                </button>
+                            </form>
+                        @endif
+                                @if(auth()->user()->role == 'admin')
+                            <form action="" method="POST" onsubmit="return confirm('Bannir cet ustilisateur ?')">
+                                @csrf
+                                <button class="px-3 py-1 text-xs font-medium text-rose-400/80 border border-rose-900/30 bg-rose-900/10 rounded-lg hover:bg-rose-600 hover:text-white transition">
+                                    Bannir
+                                </button>
+                            </form>
+                        @endif
+                        </div>
+                    </div>
                 </div>
                 @endforeach
-
-
             </div>
 
             <div class="flex justify-center mb-24">
@@ -34,9 +55,10 @@
             <div class="fixed bottom-8 left-0 right-0 px-6">
                 <div class="max-w-md mx-auto">
                     <a href="{{ url('expense/form', ['coloc_id'=>$id]) }}">
-                    <button class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl shadow-xl hover:bg-indigo-500 transition-all">
-                        Ajouter Dépense
-                    </button></a>
+                        <button class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl shadow-xl hover:bg-indigo-500 transition-all">
+                            Ajouter Dépense
+                        </button>
+                    </a>
                 </div>
             </div>
 

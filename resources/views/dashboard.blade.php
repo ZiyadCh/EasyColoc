@@ -11,7 +11,7 @@
 
         <div class="bg-gray-800 border border-gray-700 rounded-xl p-6">
             <p class="text-gray-400 text-sm mb-2">Reputation </p>
-            <h3 class="text-3xl font-bold text-green-500">
+            <h3 class="text-3xl font-bold text-white">
                 {{auth()->user()->reputation}}
             </h3>
         </div>

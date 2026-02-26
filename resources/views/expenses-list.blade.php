@@ -13,7 +13,7 @@
 
                 <div class="flex justify-between items-end">
                     <h1 class="text-4xl font-black tracking-tighter text-white">Dépenses</h1>
-                    <p class="text-3xl font-light text-white">412 MAD</p>
+
                 </div>
             </div>
 
