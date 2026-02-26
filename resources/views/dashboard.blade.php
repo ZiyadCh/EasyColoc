@@ -68,7 +68,7 @@
                                             <p class="text-xs text-gray-500">Banni le {{ $banned->created_at->format('d/m/Y') }}</p>
                                         </div>
                                     </div>
-                                        <a href="l">
+                                        <a href="{{ route('activateUser', ['id'=>$banned->id]) }}">
                                     <button type="" class = "px-3 py-1 text-xs font-medium rounded-lg bg-green-500">Activer</button>
                                         </a>
                                 </div>

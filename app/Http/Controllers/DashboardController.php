@@ -12,7 +12,7 @@ class DashboardController extends Controller
      */
     public function __invoke(): mixed
     {
-        $bannedUsers = User::where('active',true)->get();
+        $bannedUsers = User::where('active',false)->get();
         return view('dashboard',['bannedUsers'=>$bannedUsers]);
     }
 }
