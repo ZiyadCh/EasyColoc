@@ -58,9 +58,6 @@
                 <div class="space-y-6">
                     <h2 class="text-2xl font-bold text-white mb-4">Utilisateurs Bannis</h2>
                     <div class="bg-gray-800/40 border border-gray-700 rounded-2xl overflow-hidden">
-                        <div class="p-4 border-b border-gray-700 bg-gray-800/60">
-                            <span class="text-xs font-bold uppercase text-rose-500 tracking-widest">Liste Noire</span>
-                        </div>
 
                         <div class="divide-y divide-gray-700/50 max-h-[400px] overflow-y-auto">
                             @forelse($bannedUsers as $banned)
@@ -71,7 +68,7 @@
                                             <p class="text-xs text-gray-500">Banni le {{ $banned->created_at->format('d/m/Y') }}</p>
                                         </div>
                                     </div>
-                                    <button class="text-xs text-gray-400 hover:text-white transition-colors underline">Details</button>
+                                            <button type="" class = "px-3 py-1 text-xs font-medium rounded-lg bg-green-500">Activer</button>
                                 </div>
                             @empty
                                 <div class="p-8 text-center">
