@@ -48,4 +48,9 @@ class ColocationController extends Controller
             'id' => $colocation_id,
         ]);
     }
+    public function leaveColocation($id)
+    {
+        $user = auth()->user();
+        $user->colocation()->detach($id);
+    }
 }

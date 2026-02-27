@@ -39,10 +39,13 @@ class InvitationController extends Controller
         }
 
         if (!auth()->check()) {
-            return redirect('/login');
+            session()->put('url.intended', url()->current());
+
+            return redirect('/login')->with('info', 'Connectez-vous ou créez un compte pour accepter.');
         }
 
         $user = auth()->user();
+
         if ($user->role == 'outcast') {
             $user->role = 'member';
             $user->save();
