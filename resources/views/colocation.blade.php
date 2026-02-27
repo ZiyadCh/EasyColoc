@@ -62,7 +62,7 @@
             <form action="{{ route('invite', ['id'=>$id]) }}" method="POST" class="mb-3">
                 @csrf
                 <div class="flex shadow-2xl">
-                    <input type="email" name="email" required placeholder="Email du nouveau membre" class="w-full bg-gray-800/80 border border-gray-700 text-white px-4 py-4 rounded-l-2xl focus:outline-none focus:ring-1 focus:ring-green-500 transition-all">
+                    <input type="email" name="email" required placeholder="Inviter Par Email" class="w-full bg-gray-800/80 border border-gray-700 text-white px-4 py-4 rounded-l-2xl focus:outline-none focus:ring-1 focus:ring-green-500 transition-all">
                     <button type="submit" class="bg-green-600 hover:bg-green-500 text-white font-bold px-8 py-4 rounded-r-2xl transition-all whitespace-nowrap">
                         Inviter
                     </button>
