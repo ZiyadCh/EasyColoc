@@ -53,7 +53,37 @@
                         </div>
                     @endif
                 </div>
-             </div>
+
+                @if(auth()->user()->role == 'admin')
+                <div class="space-y-6">
+                    <h2 class="text-2xl font-bold text-white mb-4">Utilisateurs Bannis</h2>
+                    <div class="bg-gray-800/40 border border-gray-700 rounded-2xl overflow-hidden">
+
+                        <div class="divide-y divide-gray-700/50 max-h-[400px] overflow-y-auto">
+                            @forelse($bannedUsers as $banned)
+                                <div class="p-4 flex items-center justify-between hover:bg-gray-700/20 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <div>
+                                            <p class="text-sm font-semibold text-white">{{ $banned->name }}</p>
+                                            <p class="text-xs text-gray-500">Banni le {{ $banned->created_at->format('d/m/Y') }}</p>
+                                        </div>
+                                    </div>
+                                        <a href="{{ route('activateUser', ['id'=>$banned->id]) }}">
+                                    <button type="" class = "px-3 py-1 text-xs font-medium rounded-lg bg-green-500">Activer</button>
+                                        </a>
+                                </div>
+                            @empty
+                                <div class="p-8 text-center">
+                                    <p class="text-gray-600 italic text-sm">Aucun utilisateur banni</p>
+                                </div>
+                            @endforelse
+                        </div>
+                    </div>
+                </div>
+                @endif
+            </div>
+
+            <div class="h-20"></div>
         </div>
     </body>
 </x-app-layout>

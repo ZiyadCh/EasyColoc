@@ -23,7 +23,11 @@ class ColocationController extends Controller
         ]);
         // user role change
         $user = auth()->user();
-        $user->role = 'member';
+        if ($user->role == 'admin') {
+        } else {
+            $user->role = 'member';
+        }
+
         $user->isOwner = true;
         //add to pivot table
         $user->colocations()->attach($colocation->id);

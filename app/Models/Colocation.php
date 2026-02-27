@@ -25,6 +25,4 @@ class Colocation extends Model
     {
         return $this->hasMany(Expense::class);
     }
-
-
 }
