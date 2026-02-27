@@ -45,6 +45,8 @@ class InvitationController extends Controller
         $user = auth()->user();
 
         $user->colocations()->syncWithoutDetaching([$invite->colocation_id]);
+        $user->role = 'member';
+        $user->save();
 
         $invite->delete();
 
