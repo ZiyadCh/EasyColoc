@@ -24,7 +24,7 @@
                         <p class="text-xl font-bold text-rose-500">- {{round($member->dette,2) }} MAD</p>
 
                         <div class="flex gap-2">
-                                @if(auth()->user()->isOwner)
+                                @if(auth()->user()->isOwner && auth()->user()->id != $member->id)
                             <form action="{{ route('retirerUser', ['id'=>$member->id]) }}" method="POST" onsubmit="return confirm('Retirer ce membre ?')">
                                 @csrf
                                 <button class="px-3 py-1 text-xs font-medium text-gray-400 border border-gray-700 rounded-lg hover:bg-gray-700 hover:text-white transition">
@@ -32,7 +32,7 @@
                                 </button>
                             </form>
                         @endif
-                                @if(auth()->user()->role == 'admin')
+                                @if(auth()->user()->role == 'admin' && auth()->user()->id != $member->id )
                             <form action="{{ route('bannUser', ['id'=>$member->id]) }}" method="POST" onsubmit="return confirm('Bannir cet ustilisateur ?')">
                                 @csrf
                                 <button class="px-3 py-1 text-xs font-medium text-rose-400/80 border border-rose-900/30 bg-rose-900/10 rounded-lg hover:bg-rose-600 hover:text-white transition">
