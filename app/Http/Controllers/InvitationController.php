@@ -45,6 +45,7 @@ class InvitationController extends Controller
         $user = auth()->user();
         if ($user->role == 'outcast') {
             $user->role = 'member';
+            $user->save();
         }
 
         $user->colocations()->syncWithoutDetaching([$invite->colocation_id]);
