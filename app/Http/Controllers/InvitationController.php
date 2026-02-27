@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invitation;
 use App\Mail\InvitationMail;
 use App\Models\Colocation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class InvitationController extends Controller
 {
@@ -28,10 +30,24 @@ class InvitationController extends Controller
         return back()->with('success', 'Invitation envoyée !');
     }
 
-    public function joinColocation($email, $colocation_id)
+    public function joinColocation($token)
     {
-        $user = User::where('email', $email)->get();
-        $colocation = Colocation::findOrFail($colocation_id);
-        $colocation->users->attach($user);
+        $invite = Invitation::where('token', $token)->first();
+
+        if (!$invite || $invite->expires_at->isPast()) {
+            return redirect('/login')->with('error', 'Lien invalide ou expiré.');
+        }
+
+        if (!auth()->check()) {
+            return redirect('/register')->with('info', 'Créez un compte pour rejoindre la colocation.');
+        }
+
+        $user = auth()->user();
+
+        $user->colocations()->syncWithoutDetaching([$invite->colocation_id]);
+
+        $invite->delete();
+
+        return redirect('/dashboard')->with('success', 'Bienvenue dans votre nouvelle colocation !');
     }
 }
