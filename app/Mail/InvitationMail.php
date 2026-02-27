@@ -14,12 +14,14 @@ class InvitationMail extends Mailable
     use Queueable;
     use SerializesModels;
 
+    public $colocation;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($colocation)
     {
-        //
+        $this->colocation = $colocation;
     }
 
     /**
@@ -38,7 +40,7 @@ class InvitationMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'invitation',
         );
     }
 
