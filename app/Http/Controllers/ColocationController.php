@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Colocation;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -46,5 +47,9 @@ class ColocationController extends Controller
             'members' => $members,
             'id' => $colocation_id,
         ]);
+    }
+    public function joinColocation($email)
+    {
+        $user = User::where('email', $email)->get();
     }
 }

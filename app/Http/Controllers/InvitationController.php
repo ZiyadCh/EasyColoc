@@ -14,7 +14,7 @@ class InvitationController extends Controller
         $email = $request->input('email');
         $colocation = Colocation::findOrFail($id);
 
-        Mail::to($email)->send(new InvitationMail($colocation->nom));
+        Mail::to($email)->send(new InvitationMail($colocation->nom, $email));
         return back()->with('success', 'Invitation envoyé avec succès !');
     }
 }

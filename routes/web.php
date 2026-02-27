@@ -42,7 +42,8 @@ Route::post('transfer-owner/confirm/{id}/{oldOwner}', [AdminController::class,'n
 
 //owner
 Route::post('retirerUser/{id}', [OwnerController::class,'retirerUser'])->middleware(CheckUserIsOwner::class)->name('retirerUser');
-//email
+//email & invitation
 Route::post('invite/{id}', [InvitationController::class,'sendInvitation'])->name('invite');
+Route::get('join/{email}', [ColocationController::class,'joinColocation'])->name('accept');
 
 require __DIR__ . '/auth.php';
