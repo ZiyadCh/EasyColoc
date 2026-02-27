@@ -14,7 +14,17 @@ class InvitationController extends Controller
         $email = $request->input('email');
         $colocation = Colocation::findOrFail($id);
 
-        Mail::to($email)->send(new InvitationMail($colocation->nom, $email));
-        return back()->with('success', 'Invitation envoyé avec succès !');
+        $token = Str::random(40);
+
+        Invitation::create([
+            'email' => $email,
+            'colocation_id' => $id,
+            'token' => $token,
+            'expires_at' => now()->addDays(1),
+        ]);
+
+        Mail::to($email)->send(new InvitationMail($colocation->nom, $token));
+
+        return back()->with('success', 'Invitation envoyée !');
     }
 }
