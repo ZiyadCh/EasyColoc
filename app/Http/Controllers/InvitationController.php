@@ -39,14 +39,15 @@ class InvitationController extends Controller
         }
 
         if (!auth()->check()) {
-            return redirect('/register')->with('info', 'Créez un compte pour rejoindre la colocation.');
+            return redirect('/login');
         }
 
         $user = auth()->user();
+        if ($user->role == 'outcast') {
+            $user->role = 'member';
+        }
 
         $user->colocations()->syncWithoutDetaching([$invite->colocation_id]);
-        $user->role = 'member';
-        $user->save();
 
         $invite->delete();
 
