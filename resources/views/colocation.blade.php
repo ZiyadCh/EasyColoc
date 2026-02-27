@@ -54,7 +54,7 @@
 
             <div class="fixed bottom-8 left-0 right-0 px-6">
                 <div class="max-w-md mx-auto">
-                    <a href="">
+                    <a href="{{ route('invite', ['id'=>1]) }}">
                         <button class="w-full py-4 mb-2 bg-green-600 text-white font-bold rounded-2xl shadow-xl hover:bg-green-500 transition-all">
                             Inviter un Utilisateur
                         </button>

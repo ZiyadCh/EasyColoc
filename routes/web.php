@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ColocationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExpenceController;
+use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\CheckUserIsActive;
@@ -41,7 +42,8 @@ Route::post('transfer-owner/confirm/{id}/{oldOwner}', [AdminController::class,'n
 
 //owner
 Route::post('retirerUser/{id}', [OwnerController::class,'retirerUser'])->middleware(CheckUserIsOwner::class)->name('retirerUser');
-
+//email
+Route::get('invite', [InvitationController::class,'sendInvitation'])->name('invite');
 
 
 
