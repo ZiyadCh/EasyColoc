@@ -15,15 +15,15 @@ class InvitationMail extends Mailable
     use SerializesModels;
 
     public $colocation;
-    public $email;
+    public $token;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($colocation, $email)
+    public function __construct($colocation, $token)
     {
         $this->colocation = $colocation;
-        $this->email = $email;
+        $this->token = $token;
     }
 
     /**

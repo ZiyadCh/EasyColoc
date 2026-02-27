@@ -48,10 +48,4 @@ class ColocationController extends Controller
             'id' => $colocation_id,
         ]);
     }
-    public function joinColocation($email, $colocation_id)
-    {
-        $user = User::where('email', $email)->get();
-        $colocation = Colocation::findOrFail($colocation_id);
-        $colocation->users->attach($user);
-    }
 }

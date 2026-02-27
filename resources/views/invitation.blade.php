@@ -11,7 +11,7 @@
         </p>
 
         <div style="margin-bottom: 16px;">
-            <a href="{{ route('accept', ['email'=>$email]) }}" style="display: block; background-color: #059669; color: #ffffff; font-weight: 700; padding: 16px 32px; border-radius: 16px; text-decoration: none; box-shadow: 0 10px 15px -3px rgba(5, 150, 105, 0.3);">
+            <a href="{{ route('accept', ['token'=>$token]) }}" style="display: block; background-color: #059669; color: #ffffff; font-weight: 700; padding: 16px 32px; border-radius: 16px; text-decoration: none; box-shadow: 0 10px 15px -3px rgba(5, 150, 105, 0.3);">
                 Accepter l'invitation
             </a>
         </div>
