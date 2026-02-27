@@ -54,11 +54,22 @@
 
             <div class="fixed bottom-8 left-0 right-0 px-6">
                 <div class="max-w-md mx-auto">
-                    <a href="{{ route('invite', ['id'=>1]) }}">
-                        <button class="w-full py-4 mb-2 bg-green-600 text-white font-bold rounded-2xl shadow-xl hover:bg-green-500 transition-all">
-                            Inviter un Utilisateur
-                        </button>
-                    </a>
+                    <!-- invite available only to owner -->
+        @if(auth()->user()->isOwner)
+                        @session('success')
+                            <p class="text-center text-green-300">{{$value}}</p>
+                        @endsession
+            <form action="{{ route('invite', ['id'=>$id]) }}" method="POST" class="mb-3">
+                @csrf
+                <div class="flex shadow-2xl">
+                    <input type="email" name="email" required placeholder="Email du nouveau membre" class="w-full bg-gray-800/80 border border-gray-700 text-white px-4 py-4 rounded-l-2xl focus:outline-none focus:ring-1 focus:ring-green-500 transition-all">
+                    <button type="submit" class="bg-green-600 hover:bg-green-500 text-white font-bold px-8 py-4 rounded-r-2xl transition-all whitespace-nowrap">
+                        Inviter
+                    </button>
+                </div>
+            </form>
+        @endif
+                            <!-- -->
                     <a href="{{ url('expense/form', ['coloc_id'=>$id]) }}">
                         <button class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl shadow-xl hover:bg-indigo-500 transition-all">
                             Ajouter Dépense
@@ -66,6 +77,7 @@
                     </a>
                 </div>
             </div>
+
 
         </div>
 

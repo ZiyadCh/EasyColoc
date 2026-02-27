@@ -43,8 +43,6 @@ Route::post('transfer-owner/confirm/{id}/{oldOwner}', [AdminController::class,'n
 //owner
 Route::post('retirerUser/{id}', [OwnerController::class,'retirerUser'])->middleware(CheckUserIsOwner::class)->name('retirerUser');
 //email
-Route::get('invite', [InvitationController::class,'sendInvitation'])->name('invite');
-
-
+Route::post('invite/{id}', [InvitationController::class,'sendInvitation'])->name('invite');
 
 require __DIR__ . '/auth.php';
