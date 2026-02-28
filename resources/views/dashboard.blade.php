@@ -52,6 +52,11 @@
                             </a>
                         </div>
                     @endif
+                        @session('colocationError')
+                        <h1 class="w-full py-4 bg-white text-black font-bold rounded-2xl hover:bg-gray-200 transition-all">
+                            {{$value}}
+                        </h1>
+                    @endsession
                 </div>
              </div>
         </div>

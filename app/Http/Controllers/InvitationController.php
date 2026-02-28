@@ -45,8 +45,8 @@ class InvitationController extends Controller
         }
 
         $user = auth()->user();
-        if ($user->colocations()->isNotEmpty()) {
-            # code...
+        if ($user->colocations()->exists() && $user->role != 'admin') {
+            return redirect('/dashboard')->with('colocationError', 'vouz appartenir deja a une colocation!');
         }
 
         if ($user->role == 'outcast') {
