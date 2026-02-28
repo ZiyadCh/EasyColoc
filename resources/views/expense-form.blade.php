@@ -24,10 +24,10 @@
     <label class="block text-xs text-gray-500 uppercase mb-2 ml-1">Catégorie</label>
     <select name="categorie" class="w-full bg-gray-900 border border-gray-700 rounded-2xl p-4 text-white outline-none focus:border-indigo-500 appearance-none">
         <option value="" disabled selected>Choisir une catégorie</option>
-        <option value="">Loyer</option>
-        <option value="">Facture</option>
-        <option value="">Diner</option>
-        <option value="">Reparation</option>
+        <option value="Loyer">Loyer</option>
+        <option value="Facture">Facture</option>
+        <option value="Diner">Diner</option>
+        <option value="Reparation">Reparation</option>
     </select>
 </div>
 

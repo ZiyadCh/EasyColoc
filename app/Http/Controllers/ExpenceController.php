@@ -43,7 +43,6 @@ class ExpenceController extends Controller
     {
         $r->validate([
             'montant' => 'required|numeric|min:1',
-            'categorie' => 'required|string|max:255',
         ]);
         //getting the colocation
         $colocation = Colocation::findOrFail($col_id);

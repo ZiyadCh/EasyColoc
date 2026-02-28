@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
 Route::post('newColoc/', [ColocationController::class,'newColoc'])->name('newColoc');
 Route::view('colocForm', 'coloc-form');
 Route::get('colocation/{id}', [ColocationController::class,'colocDetails'])->name('colocDetails');
+Route::get('quitter/{id}', [ColocationController::class,'leaveColocation'])->name('leave');
 
 //expense
 Route::get('expense/form/{col_id}', [ExpenceController::class,'index']);

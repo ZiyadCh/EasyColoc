@@ -53,6 +53,7 @@ class ColocationController extends Controller
     public function leaveColocation($id)
     {
         $user = auth()->user();
-        $user->colocation()->detach($id);
+        $user->colocations()->detach($id);
+        return redirect('dasboard');
     }
 }

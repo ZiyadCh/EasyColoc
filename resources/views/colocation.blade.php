@@ -77,7 +77,7 @@
                     </a>
                     <!-- Quitter unavailable to owner -->
                     @if(!auth()->user()->isOwner)
-                    <a href="">
+                    <a href="{{ route('leave', ['id'=>$id]) }}">
                         <button class="w-full py-4 bg-black text-red-600 font-bold rounded-2xl shadow-xl ">
                             Quitter Colocation
                         </button>
