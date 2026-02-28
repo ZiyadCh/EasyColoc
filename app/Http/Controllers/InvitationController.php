@@ -45,6 +45,9 @@ class InvitationController extends Controller
         }
 
         $user = auth()->user();
+        if ($user->colocations()->isNotEmpty()) {
+            # code...
+        }
 
         if ($user->role == 'outcast') {
             $user->role = 'member';

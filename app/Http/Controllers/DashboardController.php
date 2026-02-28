@@ -13,6 +13,7 @@ class DashboardController extends Controller
     public function user()
     {
         $bannedUsers = User::where('active', false)->get();
+        //admin is led to his own dashboard
         if (auth()->user()->role === 'admin') {
             return redirect()->route('AdminDashboard');
         }
