@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -9,9 +10,11 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class Colocation extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'nom',
-        'total_expense',
+        'owner_id',
     ];
     //
     public function users(): BelongsToMany
@@ -24,5 +27,9 @@ class Colocation extends Model
     public function expenses(): HasMany
     {
         return $this->hasMany(Expense::class);
+    }
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
     }
 }

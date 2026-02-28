@@ -2,34 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CollocationSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-        \App\Models\User::factory()->create([
-            'name' => 'System Admin',
-            'email' => 'admin@coloc.com',
-            'role' => 'admin',
-            'isOwner' => false,
-        ]);
-
         \App\Models\Colocation::factory(3)->create()->each(function ($coloc) {
 
             $owner = $coloc->owner;
-
-            $owner->update([
-                'role' => 'member',
-                'isOwner' => true,
-            ]);
+            $owner->update(['role' => 'admin', 'isOwner' => true]);
 
             $coloc->users()->attach($owner);
 

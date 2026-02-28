@@ -15,15 +15,17 @@ class ColocationController extends Controller
      */
     public function newColoc(Request $r): RedirectResponse
     {
+        $user = auth()->user();
+
         $v = $r->validate([
             'nom' => 'required|string|max:255',
         ]);
         //insert colocation into db
         $colocation = Colocation::create([
             'nom' => $v['nom'],
+            'owner_id' => $user->id,
         ]);
         // user role change
-        $user = auth()->user();
         if ($user->role == 'admin') {
         } else {
             $user->role = 'member';
