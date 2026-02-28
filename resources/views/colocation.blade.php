@@ -75,11 +75,13 @@
                             Ajouter Dépense
                         </button>
                     </a>
+                    @if(!auth()->user()->isOwner)
                     <a href="">
                         <button class="w-full py-4 bg-black text-red-600 font-bold rounded-2xl shadow-xl ">
                             Quitter Colocation
                         </button>
                     </a>
+                    @endif
                 </div>
             </div>
 
