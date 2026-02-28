@@ -52,8 +52,20 @@ class ColocationController extends Controller
     }
     public function leaveColocation($id)
     {
+        $colocation = Colocation::findOrFail($id);
         $user = auth()->user();
         $user->colocations()->detach($id);
-        return redirect('dasboard');
+
+        //if user has dette
+        if ($user->dette > 0) {
+            $user->decrement('reputation');
+            $autre = $colocation->users->where('id', '!=', $user->id);
+            $prix = $user->dette / $autre->count();
+            //divide the money
+            foreach ($autre as $a) {
+                $a->increment('dette', $prix);
+            }
+        }
+        return redirect('dashboard');
     }
 }
