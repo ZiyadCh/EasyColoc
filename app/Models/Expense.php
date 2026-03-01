@@ -18,7 +18,7 @@ class Expense extends Model
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo('users');
+        return $this->belongsTo(User::class, 'payeur');
     }
     /**
      * @return BelongsTo<Colocation,Expense>
@@ -29,6 +29,6 @@ class Expense extends Model
     }
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Categorie::class);
     }
 }
