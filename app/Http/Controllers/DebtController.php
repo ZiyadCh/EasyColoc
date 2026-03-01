@@ -41,6 +41,6 @@ class DebtController extends Controller
         $user = User::find($debt->owned);
         $user->decrement('dette', $debt->amount);
 
-        return back()->with('success', 'Debt settled successfully.');
+        return redirect()->back();
     }
 }
