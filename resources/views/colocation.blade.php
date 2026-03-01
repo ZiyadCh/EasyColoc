@@ -9,7 +9,7 @@
             <div class="mb-10 flex justify-between items-center px-2">
                 <h1 class="text-3xl font-bold text-white">Balance totale</h1>
 
-                <a href="" class="flex items-center gap-2 px-4 py-2 text-xs font-semibold tracking-wide uppercase text-gray-400 border border-gray-700 rounded-xl hover:bg-gray-800 hover:text-indigo-400 transition-all border-dashed">
+                <a href="{{ route('categories', ['id'=>$id]) }}" class="flex items-center gap-2 px-4 py-2 text-xs font-semibold tracking-wide uppercase text-gray-400 border border-gray-700 rounded-xl hover:bg-gray-800 hover:text-indigo-400 transition-all border-dashed">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="Storefront" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />

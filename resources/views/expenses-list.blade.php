@@ -18,18 +18,20 @@
             </div>
 
             <div class="space-y-2 mb-32">
-
-                @foreach ($expenses as $expense)
-                <div class="bg-zinc-800 border border-gray-800 rounded-2xl p-6 flex items-center justify-between">
-                    <div>
-                        <h3 class="text-lg bold text-white tracking-tight">{{$expense->categorie}}</h3>
-                        <p class="text-sm font-medium text-white opacity-40">{{$expense->created_at}}</p>
-                    </div>
-                    <p class="text-2xl font-black italic text-emerald-500">{{$expense->montant}} MAD</p>
-                </div>
-                @endforeach
-
-            </div>
+@foreach ($expenses as $expense)
+<div class="bg-zinc-800 border border-gray-800 rounded-2xl p-6 flex items-center justify-between">
+    <div>
+        <h3 class="text-lg font-bold text-white tracking-tight">
+            {{ $expense->category->name}}
+        </h3>
+        <p class="text-sm font-medium text-white opacity-40">
+            {{ $expense->created_at->format('d/m/Y') }}
+        </p>
+    </div>
+    <p class="text-2xl font-black italic text-emerald-500">{{ $expense->montant }} MAD</p>
+</div>
+@endforeach
+                            </div>
 
 
 

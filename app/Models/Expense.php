@@ -11,7 +11,7 @@ class Expense extends Model
     protected $fillable = [
         'payeur',
         'montant',
-        'categorie',
+        'category_id',
     ];
     /**
      * @return BelongsTo<users,Expense>
@@ -26,5 +26,9 @@ class Expense extends Model
     public function colocations(): BelongsTo
     {
         return $this->belongsTo(Colocation::class);
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ColocationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExpenceController;
@@ -29,6 +30,10 @@ Route::post('newColoc/', [ColocationController::class,'newColoc'])->name('newCol
 Route::view('colocForm', 'coloc-form');
 Route::get('colocation/{id}', [ColocationController::class,'colocDetails'])->name('colocDetails');
 Route::get('quitter/{id}', [ColocationController::class,'leaveColocation'])->name('leave');
+
+//categorie
+Route::get('categorie/form/{id}', [CategorieController::class,'index'])->name('categories');
+Route::post('categorie/add/{id}', [CategorieController::class,'addCategorie'])->name('addCat');
 
 //expense
 Route::get('expense/form/{col_id}', [ExpenceController::class,'index']);

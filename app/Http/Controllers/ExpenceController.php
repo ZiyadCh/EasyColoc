@@ -11,26 +11,27 @@ use Illuminate\Http\Request;
 
 class ExpenceController extends Controller
 {
-    /**
-     * @param mixed $colocation_id
-     */
     public function index($colocation_id): View
     {
         $coloc = Colocation::findOrFail($colocation_id);
         $members = $coloc->users;
+        $categories = $coloc->categories;
 
         return view('expense-form', [
             'members' => $members,
             'id' => $colocation_id,
+            'categories' => $categories,
         ]);
     }
-    /**
-     * @param mixed $colocation_id
-     */
+
     public function list($colocation_id): View
     {
-        $colocation = Colocation::find($colocation_id);
-        $expenses = $colocation->expenses()->get();
+        $colocation = Colocation::findOrFail($colocation_id);
+
+        $expenses = $colocation->expenses()
+            ->with('category')
+            ->latest()
+            ->get();
 
         return view('expenses-list', [
             'expenses' => $expenses,
@@ -46,11 +47,11 @@ class ExpenceController extends Controller
         ]);
         //getting the colocation
         $colocation = Colocation::findOrFail($col_id);
-        //creating the colocation
+
         $colocation->expenses()->create([
             'payeur' => $r->payeur,
             'montant' => $r->montant,
-            'categorie' => $r->categorie,
+            'category_id' => $r->categorie,
         ]);
 
         $prix = $r->montant / $colocation->users()->count();
