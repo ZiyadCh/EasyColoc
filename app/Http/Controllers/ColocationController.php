@@ -55,6 +55,7 @@ class ColocationController extends Controller
         $colocation = Colocation::findOrFail($id);
         $user = auth()->user();
         $user->colocations()->detach($id);
+        $user->left_at = now();
 
         //if user has dette
         if ($user->dette > 0) {
@@ -66,6 +67,7 @@ class ColocationController extends Controller
                 $a->increment('dette', $prix);
             }
         }
+        $user->save();
         return redirect('dashboard');
     }
 }
