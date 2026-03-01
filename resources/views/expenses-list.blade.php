@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout<<x-app-layout>
     <head>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
@@ -11,31 +11,38 @@
                     ← Retour
                 </a>
 
-                <div class="flex justify-between items-end">
+                <div class="flex justify-between items-center">
                     <h1 class="text-4xl font-black tracking-tighter text-white">Dépenses</h1>
-
                 </div>
             </div>
 
-            <div class="space-y-2 mb-32">
-@foreach ($expenses as $expense)
-<div class="bg-zinc-800 border border-gray-800 rounded-2xl p-6 flex items-center justify-between">
-    <div>
-        <h3 class="text-lg font-bold text-white tracking-tight">
-            {{ $expense->category->name }}
-        </h3>
-        <p class="text-sm font-medium text-white opacity-40">
-            Payé par <span class="text-indigo-400">{{ $expense->user->name }}</span>
-            le {{ $expense->created_at->format('d/m/Y') }}
-        </p>
-    </div>
-    <p class="text-2xl font-black italic text-emerald-500">{{ $expense->montant }} MAD</p>
-</div>
-@endforeach
-                            </div>
+            <div class="space-y-3 mb-32">
+                @forelse ($expenses as $expense)
+                <div class="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-6 flex items-center justify-between hover:bg-zinc-800/50 transition-colors">
+                    <div class="space-y-1">
+                        <h3 class="text-lg font-bold text-white tracking-tight">
+                            {{ $expense->category->name ?? 'Sans catégorie' }}
+                        </h3>
+                        <p class="text-xs font-medium text-zinc-500">
+                            Payé par <span class="text-indigo-400">{{ $expense->user->name }}</span>
+                            <span class="mx-1">•</span>
+                            {{ $expense->created_at->format('d M Y') }}
+                        </p>
+                    </div>
 
-
+                    <div class="text-right">
+                        <p class="text-xl font-black italic text-emerald-500">
+                            {{ number_format($expense->montant, 2) }} <span class="text-xs not-italic ml-1">MAD</span>
+                        </p>
+                    </div>
+                </div>
+                @empty
+                <div class="text-center py-20 bg-zinc-900/30 border border-dashed border-zinc-800 rounded-3xl">
+                    <p class="text-zinc-500 italic">Aucune dépense enregistrée.</p>
+                </div>
+                @endforelse
+            </div>
 
         </div>
     </body>
-</x-app-layout>
+</x-app-layout>/x-app-layout>
