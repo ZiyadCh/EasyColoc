@@ -17,11 +17,13 @@ class Debt extends Model
         'payed',
     ];
 
-    /**
-     * @return BelongsToMany<User,Debt,Pivot>
-     */
-    public function users(): BelongsToMany
+    public function debtor()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class, 'owned');
+    }
+
+    public function creditor()
+    {
+        return $this->belongsTo(User::class, 'owns');
     }
 }
