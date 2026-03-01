@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ColocationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DebtController;
 use App\Http\Controllers\ExpenceController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\OwnerController;
@@ -51,5 +52,8 @@ Route::post('retirerUser/{id}', [OwnerController::class,'retirerUser'])->middlew
 //email & invitation
 Route::post('invite/{id}', [InvitationController::class,'sendInvitation'])->name('invite');
 Route::get('join/{token}', [InvitationController::class,'joinColocation'])->name('accept');
+//debts
+Route::get('debts/{id}', [DebtController::class,'showDebts'])->name('debts');
+Route::post('debts/payed/{id}', [DebtController::class,'markedAsPaid'])->name('debt.settle');
 
 require __DIR__ . '/auth.php';

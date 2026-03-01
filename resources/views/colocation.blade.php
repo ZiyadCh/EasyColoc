@@ -63,50 +63,29 @@
                 </div>
             </div>
 
-            <aside class="w-full lg:w-96 shrink-0 lg:sticky lg:top-12">
-                <div class="bg-gray-800/40 backdrop-blur-xl border border-gray-700/60 rounded-[3rem] p-10 shadow-2xl">
-                    <div class="flex items-center gap-3 mb-10">
-                        <div class="h-10 w-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
-                        </div>
-                        <h2 class="text-xl font-black text-white tracking-tight">Ma situation</h2>
-                    </div>
+<aside class="w-full lg:w-96 shrink-0 lg:sticky lg:top-12">
+    <div class="bg-gray-800/40 backdrop-blur-xl border border-gray-700/60 rounded-[3rem] p-10 shadow-2xl">
+        <div class="flex items-center gap-3 mb-8">
+            <div class="h-10 w-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+            </div>
+            <h2 class="text-xl font-black text-white tracking-tight">Ma situation</h2>
+        </div>
 
-                    <div class="space-y-10">
-                        <div>
-                            <p class="text-xs text-indigo-400 font-black mb-5 uppercase tracking-[0.2em]">On me doit</p>
-                            <div class="space-y-4">
-                                <div class="bg-gray-900/40 p-5 rounded-3xl border border-gray-800/50">
-                                    <div class="flex justify-between items-center mb-4">
-                                        <span class="text-md font-bold text-gray-200">Amine</span>
-                                        <span class="text-lg font-black text-emerald-500">+45.00 <span class="text-[10px] opacity-50">MAD</span></span>
-                                    </div>
-                                    <button class="w-full py-2 bg-emerald-500/10 hover:bg-emerald-500 text-emerald-500 hover:text-white text-[10px] font-black uppercase tracking-widest rounded-xl transition-all border border-emerald-500/20">
-                                        Marquer comme payé
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+        <div class="space-y-6">
 
-                        <div>
-                            <p class="text-xs text-rose-400 font-black mb-5 uppercase tracking-[0.2em]">Je dois à</p>
-                            <div class="space-y-4">
-                                <div class="bg-gray-900/40 p-5 rounded-3xl border border-gray-800/50">
-                                    <div class="flex justify-between items-center mb-4">
-                                        <span class="text-md font-bold text-gray-400">Yassine</span>
-                                        <span class="text-lg font-black text-rose-500">-150.00 <span class="text-[10px] opacity-50">MAD</span></span>
-                                    </div>
-                                    <button class="w-full py-2 bg-rose-500/10 hover:bg-rose-500 text-rose-500 hover:text-white text-[10px] font-black uppercase tracking-widest rounded-xl transition-all border border-rose-500/20">
-                                        Marquer comme payé
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                   </div>
+
+            <a href="{{ route('debts', ['id' => auth()->user()->id]) }}" class="block group">
+                <div class="flex items-center justify-between p-5 bg-indigo-600/10 border border-indigo-500/20 rounded-3xl group-hover:bg-indigo-600/20 group-hover:border-indigo-500/40 transition-all">
+                    <span class="text-sm font-bold text-indigo-400">Gérer mes dettes</span>
+
                 </div>
-            </aside>
+            </a>
+        </div>
+    </div>
+</aside>
 
             <div class="fixed bottom-8 left-0 right-0 px-6 pointer-events-none">
                 <div class="max-w-md mx-auto space-y-3 pointer-events-auto">

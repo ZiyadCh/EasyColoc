@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Debt;
 use App\Models\Colocation;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DebtController extends Controller
 {
-    public function show($id)
+    public function showDebts($id)
     {
         $colocation = Colocation::with('users')->findOrFail($id);
         $user = auth()->user();
@@ -24,7 +25,7 @@ class DebtController extends Controller
             ->with('creditor')
             ->get();
 
-        return view('colocDetails', [
+        return view('debts', [
             'id' => $id,
             'members' => $colocation->users,
             'owedToMe' => $owedToMe,
@@ -32,10 +33,13 @@ class DebtController extends Controller
         ]);
     }
 
-    public function settle($id)
+    public function markedAsPaid($id)
     {
         $debt = Debt::findOrFail($id);
         $debt->update(['payed' => true]);
+
+        $user = User::find($debt->owned);
+        $user->decrement('dette', $debt->amount);
 
         return back()->with('success', 'Debt settled successfully.');
     }
