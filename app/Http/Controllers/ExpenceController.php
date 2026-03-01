@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Colocation;
 use App\Models\Debt;
 use App\Models\Expense;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -51,7 +52,12 @@ class ExpenceController extends Controller
             'category_id' => $r->categorie,
         ]);
 
+
         $prix = $r->montant / $colocation->users()->count();
+
+        //users dette is substracted by what he paid
+        $user = User::findOrFail($r->payeur);
+        $user->decrement('dette', $r->montant - $prix);
 
         //add the dette to other users
         $colocation->users()->whereNot('id', $r->payeur)->increment('dette', $prix);
