@@ -28,10 +28,7 @@ class ExpenceController extends Controller
     {
         $colocation = Colocation::findOrFail($colocation_id);
 
-        $expenses = $colocation->expenses()
-            ->with('category')
-            ->latest()
-            ->get();
+        $expenses = $colocation->expenses()->with(['category','user'])->latest()->get();
 
         return view('expenses-list', [
             'expenses' => $expenses,

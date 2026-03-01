@@ -22,10 +22,11 @@
 <div class="bg-zinc-800 border border-gray-800 rounded-2xl p-6 flex items-center justify-between">
     <div>
         <h3 class="text-lg font-bold text-white tracking-tight">
-            {{ $expense->category->name}}
+            {{ $expense->category->name }}
         </h3>
         <p class="text-sm font-medium text-white opacity-40">
-            {{ $expense->created_at->format('d/m/Y') }}
+            Payé par <span class="text-indigo-400">{{ $expense->user->name }}</span>
+            le {{ $expense->created_at->format('d/m/Y') }}
         </p>
     </div>
     <p class="text-2xl font-black italic text-emerald-500">{{ $expense->montant }} MAD</p>
