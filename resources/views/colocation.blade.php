@@ -29,7 +29,9 @@
                         </div>
 
                         <div class="flex items-center gap-6">
-                            <p class="text-xl font-bold text-rose-500">- {{round($member->dette,2) }} MAD</p>
+                            <p class="text-xl font-bold {{ $member->dette <= 0 ? 'text-emerald-500' : 'text-rose-500' }}">
+                                {{ $member->dette <= 0 ? '+' : '-' }} {{ round(abs($member->dette), 2) }} MAD
+                            </p>
 
                             <div class="flex gap-2">
                                 @if(auth()->user()->isOwner && auth()->user()->id != $member->id)
@@ -107,7 +109,9 @@
                             <div class="flex justify-between items-end">
                                 <div>
                                     <span class="text-[10px] font-black text-gray-500 uppercase tracking-widest block mb-1">Solde Net</span>
-                                    <span class="text-3xl font-black text-white tracking-tighter">-92.80</span>
+                                    <span class="text-3xl font-black tracking-tighter text-white">
+                                        -92.80
+                                    </span>
                                 </div>
                                 <span class="text-xs font-bold text-gray-400 mb-1">MAD</span>
                             </div>
