@@ -45,6 +45,23 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+        ////////////////////////////
+        //token logic
+        if (session()->has('token_save')) {
+            $token = session('token_save');
+            $invite = Invitation::where('token', $token)->first();
+
+            if ($invite && $invite->email === $user->email) {
+                $user->colocations()->syncWithoutDetaching([$invite->colocation_id]);
+                $invite->delete();
+
+                session()->forget('token_save');
+
+                return redirect('/dashboard')->with('success', 'Bienvenue dans votre colocation !');
+            }
+        }
+        ///////////////////////
+
         return redirect(route('dashboard', absolute: false));
     }
 }

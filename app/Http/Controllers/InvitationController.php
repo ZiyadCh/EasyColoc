@@ -40,6 +40,8 @@ class InvitationController extends Controller
         }
 
         if (!auth()->check()) {
+            //save token in browser for redirect
+            session(['token_save' => $token]);
             session()->put('url.intended', url()->current());
             $registered = User::where('email', $invite->email)->first();
             //if user has account
@@ -48,8 +50,6 @@ class InvitationController extends Controller
             } else {
                 return redirect('/register')->with('info', 'créez un compte pour accepter.');
             }
-
-
         }
 
         $user = auth()->user();
