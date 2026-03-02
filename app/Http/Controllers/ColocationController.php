@@ -86,6 +86,7 @@ class ColocationController extends Controller
             return redirect()->back()->with('error', 'vouz etes pas owenr');
         }
 
+        $colocation->users()->update(['role' => 'outcast']);
         $colocation->users()->detach();
 
         $colocation->delete();
@@ -93,9 +94,9 @@ class ColocationController extends Controller
         $user = auth()->user();
         if ($user->colocations()->count() == 0) {
             $user->isOwner = false;
-            $user->save();
         }
 
+        $user->save();
         return redirect()->route('dashboard');
     }
 }
