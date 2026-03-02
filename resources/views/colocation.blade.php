@@ -114,7 +114,7 @@
                 </a>
 
                 @if(!auth()->user()->isOwner)
-                    <a href="{{ route('leave', ['id'=>$id]) }}" class="block">
+                    <a href="{{ route('leave', ['id'=>$id]) }}" onclick="return confirm('Quitter la colocation?');" class="block">
                         <button class="w-full py-4 bg-black/40 backdrop-blur-md text-red-500 font-bold rounded-2xl border border-red-900/20 hover:bg-red-900/10 transition-colors">
                             Quitter Colocation
                         </button>
