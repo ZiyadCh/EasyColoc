@@ -10,7 +10,7 @@ class CategorieController extends Controller
 {
     public function index($id)
     {
-        $categories = Expense::with('categories')->findOrFail($id);
+        $categories = Categorie::where('colocation_id', $id)->get();
         return view('categories', ['coloc' => $id,'categories' => $categories]);
     }
 
@@ -34,6 +34,6 @@ class CategorieController extends Controller
         $categorie = Categorie::findOrFail($id);
         $categorie->delete();
 
-        return redirect()->back()->with('success', 'Catégorie supprimée avec succès');
+        return redirect()->back();
     }
 }

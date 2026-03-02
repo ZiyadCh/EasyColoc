@@ -7,7 +7,7 @@
         <div class="container mx-auto p-6 md:p-12 max-w-2xl">
 
             <div class="mb-8">
-                <a href="{{ url()->previous() }}" class="text-sm text-gray-500 hover:text-indigo-400 flex items-center gap-2 transition">
+                <a href="javascript:history.back()" class="text-sm text-gray-500 hover:text-indigo-400 flex items-center gap-2 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
@@ -55,14 +55,9 @@
                         </div>
 
                         <div class="flex items-center gap-3">
-                            <a href="{{ route('categories.show', $category->id) }}" class="p-2 text-gray-500 hover:text-white transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                </svg>
-                            </a>
 
-                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Supprimer cette catégorie ?');">
+
+                            <form action="{{ route('deleteCat', ['id'=> $category->id]) }}" method="POST" onsubmit="return confirm('Supprimer cette catégorie ?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="p-2 text-gray-500 hover:text-rose-500 transition">

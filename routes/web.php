@@ -37,6 +37,7 @@ Route::get('/colocation/cancel/{id}', [ColocationController::class, 'cancel'])->
 //categorie
 Route::get('categorie/form/{id}', [CategorieController::class,'index'])->name('categories');
 Route::post('categorie/add/{id}', [CategorieController::class,'addCategorie'])->name('addCat');
+Route::delete('categorie/delete/{id}', [CategorieController::class,'destroy'])->name('deleteCat');
 
 //expense
 Route::get('expense/form/{col_id}', [ExpenceController::class,'index']);
