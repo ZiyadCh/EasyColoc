@@ -44,7 +44,7 @@ class ColocationController extends Controller
     public function colocDetails($colocation_id): View
     {
         $coloc = Colocation::findOrFail($colocation_id);
-        $members = $coloc->users;
+
         return view('colocation', [
             'members' => $members,
             'id' => $colocation_id,
@@ -57,15 +57,20 @@ class ColocationController extends Controller
         $user->colocations()->detach($id);
         $user->left_at = now();
 
-        //if user has dette
+        //if user has dette, loses rep
         if ($user->dette > 0) {
             $user->decrement('reputation');
+            $user->dette = 0;
+            //divide the money
             $autre = $colocation->users->where('id', '!=', $user->id);
             $prix = $user->dette / $autre->count();
-            //divide the money
             foreach ($autre as $a) {
                 $a->increment('dette', $prix);
             }
+        }
+        //if user has no dette, gain rep
+        if ($user->dette <= 0) {
+            $user->increment('reputation');
         }
         $user->save();
         return redirect('dashboard');
