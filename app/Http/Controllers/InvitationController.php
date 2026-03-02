@@ -42,7 +42,6 @@ class InvitationController extends Controller
         if (!auth()->check()) {
             //save token in browser for redirect
             session(['token_save' => $token]);
-            session()->put('url.intended', url()->current());
             $registered = User::where('email', $invite->email)->first();
             //if user has account
             if ($registered) {
