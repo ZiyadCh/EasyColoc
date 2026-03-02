@@ -45,6 +45,5 @@ class DebtController extends Controller
         $owner->increment('dette', $debt->amount);
 
         return redirect()->back();
-
     }
 }
