@@ -77,7 +77,7 @@
         <div class="space-y-6">
 
 
-            <a href="{{ route('debts', ['id' => auth()->user()->id]) }}" class="block group">
+            <a href="{{ route('debts', ['id' => $id]) }}" class="block group">
                 <div class="flex items-center justify-between p-5 bg-indigo-600/10 border border-indigo-500/20 rounded-3xl group-hover:bg-indigo-600/20 group-hover:border-indigo-500/40 transition-all">
                     <span class="text-sm font-bold text-indigo-400">Gérer mes dettes</span>
 
