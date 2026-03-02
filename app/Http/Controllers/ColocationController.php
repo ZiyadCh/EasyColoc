@@ -44,6 +44,7 @@ class ColocationController extends Controller
     public function colocDetails($colocation_id): View
     {
         $coloc = Colocation::findOrFail($colocation_id);
+        $members = $coloc->users;
 
         return view('colocation', [
             'members' => $members,
@@ -62,6 +63,7 @@ class ColocationController extends Controller
             $user->decrement('reputation');
             $user->dette = 0;
             //divide the money
+            //
             $autre = $colocation->users->where('id', '!=', $user->id);
             $prix = $user->dette / $autre->count();
             foreach ($autre as $a) {

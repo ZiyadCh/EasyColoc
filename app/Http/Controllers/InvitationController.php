@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Invitation;
 use App\Mail\InvitationMail;
 use App\Models\Colocation;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -40,8 +41,15 @@ class InvitationController extends Controller
 
         if (!auth()->check()) {
             session()->put('url.intended', url()->current());
+            $registered = User::where('email', $invite->email)->first();
+            //if user has account
+            if ($registered) {
+                return redirect('/login')->with('info', 'Connectez-vous pour accepter.');
+            } else {
+                return redirect('/register')->with('info', 'créez un compte pour accepter.');
+            }
 
-            return redirect('/login')->with('info', 'Connectez-vous ou créez un compte pour accepter.');
+
         }
 
         $user = auth()->user();
