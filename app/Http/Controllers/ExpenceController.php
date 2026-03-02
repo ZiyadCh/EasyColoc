@@ -36,9 +36,7 @@ class ExpenceController extends Controller
             'id' => $colocation_id,
         ]);
     }
-    /**
-     * @param mixed $col_id
-     */
+
     public function addExpence(Request $r, $col_id): RedirectResponse
     {
         $r->validate([
@@ -81,8 +79,15 @@ class ExpenceController extends Controller
         return redirect()->route('colocDetails', [$colocation->id]);
     }
 
-    public function filter(Request $request, $colocation)
+    public function filter(Request $request, $colocation_id)
     {
-        # code...
+        $colocation = Colocation::findOrFail($colocation_id);
+
+        $expenses = $colocation->expenses()->with(['category','user'])->whereMonth('created_at', $request->month)->latest()->get();
+
+        return view('expenses-list', [
+            'expenses' => $expenses,
+            'id' => $colocation_id,
+        ]);
     }
 }
