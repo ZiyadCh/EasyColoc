@@ -30,7 +30,7 @@
 
                         <div class="flex items-center gap-6">
                             <p class="text-xl font-bold {{ $member->dette <= 0 ? 'text-emerald-500' : 'text-rose-500' }}">
-                                {{ $member->dette <= 0 ? '+' : '-' }} {{ abs($member->dette) }} MAD
+                                {{ $member->dette <= 0 ? '+' : '-' }} {{round(abs($member->dette) ,2) }} MAD
                             </p>
 
                             <div class="flex gap-2">
