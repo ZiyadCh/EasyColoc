@@ -33,6 +33,7 @@ class ExpenceController extends Controller
 
         return view('expenses-list', [
             'expenses' => $expenses,
+            'id' => $colocation_id,
         ]);
     }
     /**
@@ -78,5 +79,10 @@ class ExpenceController extends Controller
         }
 
         return redirect()->route('colocDetails', [$colocation->id]);
+    }
+
+    public function filter(Request $request, $colocation)
+    {
+        # code...
     }
 }

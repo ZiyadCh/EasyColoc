@@ -42,6 +42,7 @@ Route::post('categorie/add/{id}', [CategorieController::class,'addCategorie'])->
 Route::get('expense/form/{col_id}', [ExpenceController::class,'index']);
 Route::post('expense/{id}', [ExpenceController::class,'addExpence'])->name('addExp');
 Route::get('colocation/expense/list/{id}', [ExpenceController::class,'list']);
+Route::post('expense/month/{id}', [ExpenceController::class,'filter'])->name('filter');
 
 //admin
 Route::post('bannUser/{id}', [AdminController::class,'bannUser'])->name('bannUser');
