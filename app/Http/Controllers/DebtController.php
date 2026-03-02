@@ -41,6 +41,9 @@ class DebtController extends Controller
         $user = User::find($debt->owned);
         $user->decrement('dette', $debt->amount);
 
+        $owner = User::find($debt->owns);
+        $owner->increment('dette', $debt->amount);
+
         return redirect()->back();
     }
 }
