@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -17,7 +16,6 @@ return new class extends Migration
             $table->enum('role', ['admin','member','outcast'])->default('outcast');
             $table->integer('reputation')->default(1);
             $table->float('dette')->default(0);
-            $table->float('total_dette')->default(0);
             $table->boolean('active')->default(true);
             $table->boolean('isOwner')->default(false);
             $table->dateTime('left_at')->nullable();

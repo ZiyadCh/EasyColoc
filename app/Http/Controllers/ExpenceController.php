@@ -61,7 +61,6 @@ class ExpenceController extends Controller
 
         //add the dette to other users
         $colocation->users()->whereNot('id', $r->payeur)->increment('dette', $prix);
-        $colocation->users()->whereNot('id', $r->payeur)->increment('total_dette', $prix);
 
         $members = $colocation->users;
 

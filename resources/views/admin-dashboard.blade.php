@@ -14,7 +14,7 @@
                 </div>
                 <div class="bg-gray-800/50 border border-gray-700 rounded-2xl p-6 backdrop-blur-sm">
                     <p class="text-gray-400 text-sm font-medium mb-1 uppercase tracking-wider">Dette totale</p>
-                    <h3 class="text-4xl font-black text-rose-500">{{ auth()->user()->total_dette }} <span class="text-lg font-normal">MAD</span></h3>
+                    <h3 class="text-4xl font-black text-rose-500">{{ auth()->user()->dette}} <span class="text-lg font-normal">MAD</span></h3>
                 </div>
             </div>
 

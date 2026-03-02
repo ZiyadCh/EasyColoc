@@ -29,7 +29,6 @@ class UserFactory extends Factory
             'role' => fake()->randomElement(['admin', 'member', 'outcast']),
             'reputation' => 1,
             'dette' => 0,
-            'total_dette' => 0,
             'active' => true,
             'isOwner' => false,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

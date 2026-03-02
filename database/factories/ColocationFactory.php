@@ -18,7 +18,6 @@ class ColocationFactory extends Factory
     {
         return [
             'nom' => $this->faker->city() . ' House',
-            'total_expense' => 0,
             'owner_id' => \App\Models\User::factory(),
             'created_at' => now(),
             'updated_at' => now(),

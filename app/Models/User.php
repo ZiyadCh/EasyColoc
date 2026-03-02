@@ -26,7 +26,6 @@ class User extends Authenticatable
         'role',
         'reputation',
         'dette',
-        'total_dette',
         'active',
         'isOwner',
         'email',
