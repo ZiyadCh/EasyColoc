@@ -32,6 +32,7 @@ Route::view('colocForm', 'coloc-form');
 Route::get('colocation/{id}', [ColocationController::class,'colocDetails'])->name('colocDetails');
 Route::get('quitter/{id}', [ColocationController::class,'leaveColocation'])->name('leave');
 Route::delete('/colocation/{id}', [ColocationController::class, 'destroy'])->name('destroy');
+Route::get('/colocation/cancel/{id}', [ColocationController::class, 'cancel'])->name('cancel');
 
 //categorie
 Route::get('categorie/form/{id}', [CategorieController::class,'index'])->name('categories');

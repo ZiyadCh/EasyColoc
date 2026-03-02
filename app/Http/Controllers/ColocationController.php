@@ -40,10 +40,13 @@ class ColocationController extends Controller
     /**
      * @param mixed $colocation_id
      */
-    public function colocDetails($colocation_id): View
+    public function colocDetails($colocation_id): RedirectResponse|View
     {
         $coloc = Colocation::findOrFail($colocation_id);
         $members = $coloc->users;
+        if (!$coloc->active) {
+            return redirect()->route('dashboard');
+        }
 
         return view('colocation', [
             'members' => $members,
@@ -90,6 +93,27 @@ class ColocationController extends Controller
         $colocation->users()->detach();
 
         $colocation->delete();
+
+        $user = auth()->user();
+        if ($user->colocations()->count() == 0) {
+            $user->isOwner = false;
+        }
+
+        $user->save();
+        return redirect()->route('dashboard');
+    }
+    public function cancel($id): RedirectResponse
+    {
+        $colocation = Colocation::findOrFail($id);
+
+        if ($colocation->owner_id !== auth()->id()) {
+            return redirect()->back()->with('error', 'vouz etes pas owenr');
+        }
+
+        $colocation->users()->update(['role' => 'outcast']);
+        $colocation->users()->detach();
+        $colocation->update(['active' => false]);
+
 
         $user = auth()->user();
         if ($user->colocations()->count() == 0) {

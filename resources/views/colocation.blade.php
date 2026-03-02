@@ -124,17 +124,31 @@
         </div>
 
         @if(auth()->user()->isOwner)
+            <div class="fixed bottom-8 left-8 z-50">
+                <form action="{{ route('cancel', ['id'=>$id]) }}" method="GET" onsubmit="return confirm('Expulser tout le monde ?');">
+                    @csrf
+                    <button type="submit" class="group flex items-center gap-3 p-2 pr-4 bg-gray-900/80 backdrop-blur-md border border-gray-700 rounded-2xl hover:border-amber-500 transition-all duration-300 shadow-2xl">
+                        <div class="h-10 w-10 bg-gray-800 group-hover:bg-amber-600 rounded-xl flex items-center justify-center transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <span class="text-[10px] font-black uppercase tracking-tighter text-gray-400 group-hover:text-amber-500">Annuler Coloc</span>
+                    </button>
+                </form>
+            </div>
+
             <div class="fixed bottom-8 right-8 z-50">
-                <form action="{{ route('destroy', $id) }}" method="POST" onsubmit="return confirm('Attention : Cette action supprimera définitivement la colocation et toutes ses données.');">
+                <form action="{{ route('destroy', $id) }}" method="POST" onsubmit="return confirm('Supprimer définitivement ?');">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="group flex items-center gap-3 p-2 pr-4 bg-gray-900/80 backdrop-blur-md border border-rose-500/30 rounded-2xl hover:bg-rose-600 hover:border-rose-500 transition-all duration-300 shadow-2xl shadow-rose-900/40">
+                    <button type="submit" class="group flex items-center gap-3 p-2 pr-4 bg-gray-900/80 backdrop-blur-md border border-rose-500/30 rounded-2xl hover:bg-rose-600 hover:border-rose-500 transition-all duration-300 shadow-2xl">
                         <div class="h-10 w-10 bg-rose-600/20 group-hover:bg-rose-100 rounded-xl flex items-center justify-center transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-rose-500 group-hover:text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg>
                         </div>
-                        <span class="text-[10px] font-black uppercase tracking-tighter text-rose-500 group-hover:text-white">supprimer la colocation</span>
+                        <span class="text-[10px] font-black uppercase tracking-tighter text-rose-500 group-hover:text-white">Supprimer Coloc</span>
                     </button>
                 </form>
             </div>
