@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Colocation;
-use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -51,7 +50,7 @@ class ColocationController extends Controller
             'id' => $colocation_id,
         ]);
     }
-    public function leaveColocation($id)
+    public function leaveColocation($id): RedirectResponse
     {
         $colocation = Colocation::findOrFail($id);
         $user = auth()->user();
@@ -61,7 +60,6 @@ class ColocationController extends Controller
         //if user has dette, loses rep
         if ($user->dette > 0) {
             $user->decrement('reputation');
-            $user->dette = 0;
             //divide the money
             //
             $autre = $colocation->users->where('id', '!=', $user->id);
@@ -69,12 +67,35 @@ class ColocationController extends Controller
             foreach ($autre as $a) {
                 $a->increment('dette', $prix);
             }
+            $user->dette = 0;
         }
+
         //if user has no dette, gain rep
-        if ($user->dette <= 0) {
+        elseif ($user->dette <= 0) {
             $user->increment('reputation');
         }
         $user->save();
         return redirect('dashboard');
+    }
+
+    public function destroy($id): RedirectResponse
+    {
+        $colocation = Colocation::findOrFail($id);
+
+        if ($colocation->owner_id !== auth()->id()) {
+            return redirect()->back()->with('error', 'vouz etes pas owenr');
+        }
+
+        $colocation->users()->detach();
+
+        $colocation->delete();
+
+        $user = auth()->user();
+        if ($user->colocations()->count() == 0) {
+            $user->isOwner = false;
+            $user->save();
+        }
+
+        return redirect()->route('dashboard');
     }
 }

@@ -44,6 +44,5 @@ class DebtController extends Controller
         $owner = User::find($debt->owns);
         $owner->increment('dette', $debt->amount);
 
-        return redirect()->route('colocDetails');
     }
 }
