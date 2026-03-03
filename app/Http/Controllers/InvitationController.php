@@ -56,7 +56,9 @@ class InvitationController extends Controller
             return redirect('/dashboard')->with('colocationError', 'vouz appartenir deja a une colocation!');
         }
 
-        if ($user->role == 'outcast') {
+        if ($user->role == 'admin') {
+            # code...
+        } elseif ($user->role == 'outcast') {
             $user->role = 'member';
             $user->save();
         }
