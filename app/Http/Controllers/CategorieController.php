@@ -25,7 +25,7 @@ class CategorieController extends Controller
             'colocation_id' => $coloc,
         ]);
 
-        return redirect()->back()->with('success', 'categorie enregistre avec success');
+        return redirect()->back();
     }
 
 

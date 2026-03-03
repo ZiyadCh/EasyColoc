@@ -57,6 +57,7 @@ class ExpenceController extends Controller
         //users dette is substracted by what he paid
         $user = User::findOrFail($r->payeur);
         $user->decrement('dette', $r->montant - $prix);
+        $user->increment('total_expense', $r->montant);
 
         //add the dette to other users
         $colocation->users()->whereNot('id', $r->payeur)->increment('dette', $prix);

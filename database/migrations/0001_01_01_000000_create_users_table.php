@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->enum('role', ['admin','member','outcast'])->default('outcast');
             $table->integer('reputation')->default(1);
             $table->float('dette')->default(0);
+            $table->float('total_expense')->default(0);
             $table->boolean('active')->default(true);
             $table->boolean('isOwner')->default(false);
             $table->dateTime('left_at')->nullable();
