@@ -83,7 +83,6 @@ class ExpenceController extends Controller
     public function filter(Request $request, $colocation_id)
     {
         $colocation = Colocation::findOrFail($colocation_id);
-
         $expenses = $colocation->expenses()->with(['category','user'])->whereMonth('created_at', $request->month)->latest()->get();
 
         return view('expenses-list', [
