@@ -25,6 +25,7 @@ class AdminController extends Controller
         }
 
         $user->colocations()->detach();
+        $user->role = 'outcast';
         $user->save();
         return redirect()->back();
     }
