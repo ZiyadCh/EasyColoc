@@ -7,7 +7,7 @@
         <div class="container mx-auto p-6 md:p-12 max-w-2xl">
 
             <div class="mb-8">
-                <a href="javascript:history.back()" class="text-sm text-gray-500 hover:text-indigo-400 flex items-center gap-2 transition">
+                <a href="{{ route('colocDetails', ['id'=>$coloc]) }}" class="text-sm text-gray-500 hover:text-indigo-400 flex items-center gap-2 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>

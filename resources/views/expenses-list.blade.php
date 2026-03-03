@@ -7,7 +7,7 @@
         <div class="container mx-auto p-6 max-w-xl">
 
             <div class="mb-10 px-2 flex flex-col gap-6">
-                <a href="javascript:history.back()" class="text-white font-bold text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity">
+                <a href="{{ route('colocDetails', ['id'=>$id]) }}" class="text-white font-bold text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity">
                     ← Retour
                 </a>
 
