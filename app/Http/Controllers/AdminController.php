@@ -66,13 +66,20 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
         $banned = User::findOrFail($oldOwner);
         $user->isOwner = true;
+
         $banned->isOwner = false;
         $banned->active = false;
         $banned->role = 'outcast';
+
+        //aredefine owner id
+        $colocation = $banned->colocations()->first();
+        $colocation->owner_id = $user->id ;
+
         $banned->colocations()->detach();
         //enregister
         $user->save();
         $banned->save();
+
 
         return redirect()->route('dashboard');
     }
