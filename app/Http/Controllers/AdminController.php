@@ -74,6 +74,7 @@ class AdminController extends Controller
         //aredefine owner id
         $colocation = $banned->colocations()->first();
         $colocation->owner_id = $user->id ;
+        $colocation->save();
 
         $banned->colocations()->detach();
         //enregister
