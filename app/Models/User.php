@@ -45,6 +45,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Colocation::class);
     }
+    public function debts(): BelongsToMany
+    {
+        return $this->hasMany(Colocation::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
