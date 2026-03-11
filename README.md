@@ -1,209 +1,59 @@
-EasyColoc
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-EasyColoc is a web application for managing shared expenses between roommates.
-It is inspired by Tricount and allows users to track expenses, split costs, and calculate balances between participants in a shared housing environment.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-The application simplifies expense tracking by automatically calculating who owes money to whom.
+## About Laravel
 
-Features
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-Create shared expense groups
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Add participants to groups
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-Record expenses
+## Learning Laravel
 
-Split expenses between selected participants
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
 
-Automatic balance calculation
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-View simplified debts between roommates
+## Laravel Sponsors
 
-Responsive interface
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-Screenshots
-Dashboard
+### Premium Partners
 
-Displays the list of expenses and current balances.
+- **[Vehikl](https://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Redberry](https://redberry.international/laravel-development)**
+- **[Active Logic](https://activelogic.com)**
 
-Add Expense
+## Contributing
 
-Form used to create a new expense and assign participants.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-Balance Summary
+## Code of Conduct
 
-Shows simplified debts between participants.
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-Tech Stack
+## Security Vulnerabilities
 
-Backend
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-PHP
+## License
 
-Laravel
-
-Frontend
-
-Blade Templates
-
-Laravel Mix / Vite
-
-Bootstrap or Tailwind CSS
-
-Database
-
-MySQL or PostgreSQL
-
-Architecture
-
-EasyColoc follows a standard Laravel MVC architecture.
-
-Client (Browser)
-      |
-      | HTTP Request
-      v
-Laravel Routes
-      |
-Controllers
-      |
-Models (Eloquent ORM)
-      |
-Database
-
-Explanation
-
-Routes define the endpoints of the application.
-
-Controllers contain the business logic.
-
-Models interact with the database using Laravel's Eloquent ORM.
-
-Views (Blade templates) render the user interface.
-
-Project Structure
-
-Typical Laravel project structure used by EasyColoc.
-
-easycoloc
-|
-├── app
-│   ├── Http
-│   │   ├── Controllers
-│   │   └── Middleware
-│   ├── Models
-│
-├── bootstrap
-│
-├── config
-│
-├── database
-│   ├── migrations
-│   └── seeders
-│
-├── public
-│
-├── resources
-│   ├── views
-│   ├── css
-│   └── js
-│
-├── routes
-│   └── web.php
-│
-├── storage
-│
-├── tests
-│
-└── README.md
-
-Important directories
-
-app/Models contains database models such as User, Group, and Expense.
-
-app/Http/Controllers contains controllers that manage application logic.
-
-database/migrations contains database schema definitions.
-
-resources/views contains Blade templates.
-
-routes/web.php defines web routes.
-
-Installation
-1 Clone the repository
-git clone https://github.com/yourusername/easycoloc.git
-
-Explanation
-
-git clone downloads the entire repository from GitHub to your local machine.
-
-The project will be placed inside a folder named easycoloc.
-
-2 Move into the project directory
-cd easycoloc
-
-Explanation
-
-cd means change directory.
-
-This command moves the terminal into the project folder so all following commands run inside it.
-
-3 Install PHP dependencies
-composer install
-
-Explanation
-
-composer is the dependency manager used by PHP and Laravel.
-
-install reads the composer.json file and downloads all required packages into the vendor/ directory.
-
-4 Install JavaScript dependencies
-npm install
-
-Explanation
-
-npm is the Node.js package manager.
-
-install reads the package.json file and downloads frontend dependencies used for assets and compilation.
-
-5 Create environment configuration
-cp .env.example .env
-
-Explanation
-
-.env.example is a template configuration file.
-
-cp copies it into .env, which stores environment variables such as database credentials.
-
-6 Generate application key
-php artisan key:generate
-
-Explanation
-
-php artisan runs Laravel's command-line tool.
-
-key:generate creates a unique encryption key and stores it in .env.
-
-Laravel uses this key to encrypt sessions, cookies, and other sensitive data.
-
-7 Configure database
-
-Edit .env and change the database settings:
-
-DB_DATABASE=easycoloc
-DB_USERNAME=root
-DB_PASSWORD=password
-
-Explanation
-
-These variables tell Laravel how to connect to the database.
-
-8 Run database migrations
-php artisan migrate
-
-Explanation
-
-migrate executes all migration files in database/migrations.
-
-Each migration describes a database table structure.
-
-Laravel
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
